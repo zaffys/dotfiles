@@ -1,0 +1,22 @@
+" clipboard にコピー
+set clipboard=unnamed
+" 小文字のみで検索したときに大文字小文字を無視する
+set smartcase
+" 大文字で検索したときに大文字小文字を無視しない
+set ignorecase
+" 最後尾まで検索を終えたら次の検索で先頭に移る
+set wrapscan
+" 検索ワードの最初の文字を入力した時点で検索を開始する
+set incsearch
+" タブ入力を複数の空白入力に置き換える
+set expandtab
+" 検索結果をハイライト表示する
+set hlsearch
+" 最後尾まで検索を終えたら次の検索で先頭に移る
+set wrapscan
+" 行番号を表示する
+set number
+" 行番号を相対表示する
+set relativenumber
+" insert mode to normal mode
+inoremap jj <ESC>

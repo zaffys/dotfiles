@@ -1,0 +1,187 @@
+[[plugins]]
+repo = '~/.cache/dein/repos/github.com/Shougo/dein.vim'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+hook_add = '''
+ let g:airline_theme='bubblegum'
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+depends = 'vim-airline-themes'
+hook_add = '''
+  let g:airline_powerline_fonts=1
+  let g:airline#extensions#tabline#enabled=1
+  let g:airline#extensions#whitespace#mixed_indent_algo=1
+  let g:airline#extensions#tabline#formatter='unique_tail_improved'
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" unicode symbols
+  let g:airline_left_sep = '»'
+  let g:airline_left_sep = '▶'
+  let g:airline_right_sep = '«'
+  let g:airline_right_sep = '◀'
+  let g:airline_symbols.crypt = '🔒'
+  let g:airline_symbols.linenr = '␊'
+  let g:airline_symbols.linenr = '␤'
+  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.maxlinenr = '☰'
+  let g:airline_symbols.maxlinenr = ''
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.paste = 'Þ'
+  let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.spell = 'Ꞩ'
+  let g:airline_symbols.notexists = '∄'
+  let g:airline_symbols.whitespace = 'Ξ'
+
+" powerline symbols
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ''
+
+" old vim-powerline symbols
+" let g:airline_left_sep = '⮀'
+" let g:airline_left_alt_sep = '⮁'
+  let g:airline_right_sep = '⮂'
+  let g:airline_right_alt_sep = '⮃'
+" let g:airline_symbols.branch = '⭠'
+" let g:airline_symbols.readonly = '⭤'
+" let g:airline_symbols.linenr = '⭡'
+'''
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --bin'
+merged = '0'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'fzf'
+hook_add = '''
+  nnoremap <silent> <Leader>f :Files<CR>
+  nnoremap <silent> <Leader>F :GFiles?<CR>
+  nnoremap <silent> <Leader><Leader> :Buffers<CR>
+  nnoremap <silent> <Leader>l :BLines<CR>
+  nnoremap <silent> <Leader>. :Snippets<CR>
+  nnoremap <silent> <Leader>h :History<CR>
+  nnoremap <silent> <Leader>g :Rg<CR>
+
+  command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+  command! -bang -nargs=* Rg
+    \ call fzf#vim#grep(
+    \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+    \   fzf#vim#with_preview({'options': '--exact --delimiter : --nth 3..'}), <bang>0)
+'''
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add = '''
+  nnoremap <silent> <Leader>s :Gstatus<CR>
+  nnoremap <silent> <Leader>a :Gwrite<CR>
+  nnoremap <silent> <Leader>c :Gcommit<CR>
+  nnoremap <silent> <Leader>b :Gblame<CR>
+  nnoremap <silent> <Leader>d :Gdiff<CR>
+  nnoremap <silent> <Leader>m :Gmerge<CR>
+'''
+
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+merged = 0
+hook_add = '''
+  let g:coc_global_extensions = [
+    \ 'coc-diagnostic'
+    \, 'coc-tsserver'
+    \, 'coc-vetur'
+    \, 'coc-emmet'
+    \, 'coc-tabnine'
+    \, 'coc-css'
+    \, 'coc-html'
+    \, 'coc-markdownlint'
+    \, 'coc-solargraph'
+    \, 'coc-eslint'
+    \, 'coc-json'
+    \, 'coc-yank'
+    \, 'coc-yaml'
+    \, 'coc-prettier'
+    \, 'coc-explorer'
+    \, 'coc-snippets'
+  \]
+  command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+  nmap <silent> [g <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]g <Plug>(coc-diagnostic-next)
+  xmap ff  <Plug>(coc-format-selected)
+  nmap ff  <Plug>(coc-format-selected)
+  nmap <silent> L :<C-u>CocList<cr>
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+  nmap <silent> <C-]> <Plug>(coc-definition)
+  nmap <silent> <C-[> <Plug>(coc-type-definition)
+  nmap <silent> <C-u> <Plug>(coc-implementation)
+  nmap <silent> <C-t> <Plug>(coc-references)
+  nmap <silent> ,r <Plug>(coc-rename)
+  nmap <silent> ,f <Plug>(coc-format)
+  nmap <silent> <C-e> :CocCommand explorer<CR>
+
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      call CocActionAsync('doHover')
+    endif
+  endfunction
+'''
+
+
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+[[plugins]]
+repo = 'kentarosasaki/vim-emacs-bindings'
+
+[[plugins]]
+repo = 'yuttie/comfortable-motion.vim'
+hook_add = '''
+  let g:comfortable_motion_interval = 2400.0 / 60
+  let g:comfortable_motion_friction = 100.0
+  let g:comfortable_motion_air_drag = 3.0
+'''
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+  let g:indent_guides_enable_on_vim_startup = 1
+'''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'morhetz/gruvbox'
+hook_add = '''
+  let g:gruvbox_italic=1
+  colorscheme gruvbox
+'''

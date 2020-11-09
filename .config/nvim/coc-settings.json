@@ -1,0 +1,19 @@
+{
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue"
+  ],
+  "javascript.suggestionActions.enabled": false,
+  "prettier.disableSuccessMessage": true,
+  "coc.preferences.formatOnSaveFiletypes": ["json", "graphql", "ruby"],
+  "tsserver.formatOnType": true,
+  "diagnostic.enable": true,
+  "coc.preferences.formatOnType": true,
+  "suggest.enablePreselect": true,
+  "explorer.quitOnOpen": true,
+  "explorer.icon.enableNerdfont": true
+}

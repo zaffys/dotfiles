@@ -1,0 +1,37 @@
+### all ignore ###
+/*
+/.**
+
+### not ignore ###
+!/.bin/
+!/.bin/**
+!/.bin.local
+!/.config/
+!/.config/gh/
+!/.config/gh/state.yml
+!/.config/gh/config.yml
+!/.config/nvim/
+!/.config/nvim/coc-settings.json
+!/.config/nvim/dein.toml
+!/.config/nvim/dein_lazy.toml
+!/.config/nvim/init.vim
+!/.gitconfig
+!/.github/
+!/.github/**
+!/.gitignore_global
+!/.tmux.conf
+!/.tmux/
+!/.tmux/plugins/
+!/.tmux/plugins/**
+!/.tmux/log/
+!/.vimrc
+!/.vim/
+!/.vim/**
+!/.xvimrc
+!/.zshrc
+!/.zshenv
+
+!/README.md
+!/LICENSE
+!.gitignore
+!.gitkeep

@@ -1,0 +1,23 @@
+[user]
+  email = shimada.reona@gmail.com
+	name = reona5
+[core]
+	excludesfile = /Users/leonard_5/.gitignore_global
+	editor = nvim
+[alias]
+	ci = commit
+	st = status
+	br = branch
+	co = checkout
+[merge]
+	ff = false
+[pull]
+	rebase = true
+	prune = true
+[fetch]
+	prune = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
