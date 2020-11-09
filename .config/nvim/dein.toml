@@ -111,9 +111,6 @@ hook_add = '''
 repo = 'bronson/vim-trailing-whitespace'
 
 [[plugins]]
-repo = 'kentarosasaki/vim-emacs-bindings'
-
-[[plugins]]
 repo = 'yuttie/comfortable-motion.vim'
 hook_add = '''
   let g:comfortable_motion_interval = 2400.0 / 60
