@@ -111,18 +111,10 @@ hook_add = '''
 repo = 'bronson/vim-trailing-whitespace'
 
 [[plugins]]
-repo = 'yuttie/comfortable-motion.vim'
-hook_add = '''
-  let g:comfortable_motion_interval = 2400.0 / 60
-  let g:comfortable_motion_friction = 100.0
-  let g:comfortable_motion_air_drag = 3.0
-'''
-
-[[plugins]]
 repo = 'jiangmiao/auto-pairs'
 
 [[plugins]]
-repo = 'tpope/vim-surround'
+repo = 'machakann/vim-sandwich'
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
