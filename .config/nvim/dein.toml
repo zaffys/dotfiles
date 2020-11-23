@@ -13,11 +13,59 @@ let g:lightline = {
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead'
       \ },
-      \ }'''
+      \ }
+'''
 
 [[plugins]]
-repo = 'tomtom/tcomment_vim'
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+merged = 0
+repo = 'kristijanhusak/defx-git'
+hook_add = '''
+  let g:coc_global_extensions = [
+    \ 'coc-diagnostic'
+    \, 'coc-tsserver'
+    \, 'coc-vetur'
+    \, 'coc-emmet'
+    \, 'coc-tabnine'
+    \, 'coc-css'
+    \, 'coc-html'
+    \, 'coc-markdownlint'
+    \, 'coc-solargraph'
+    \, 'coc-eslint'
+    \, 'coc-json'
+    \, 'coc-yank'
+    \, 'coc-yaml'
+    \, 'coc-prettier'
+    \, 'coc-explorer'
+    \, 'coc-snippets'
+  \]
 
+  command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+  nmap <silent> [g <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]g <Plug>(coc-diagnostic-next)
+  xmap ff  <Plug>(coc-format-selected)
+  nmap ff  <Plug>(coc-format-selected)
+  nmap <silent> L :<C-u>CocList<cr>
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+  nmap <silent> <C-]> <Plug>(coc-definition)
+  nmap <silent> <C-[> <Plug>(coc-type-definition)
+  nmap <silent> <C-u> <Plug>(coc-implementation)
+  nmap <silent> <C-t> <Plug>(coc-references)
+  nmap <silent> ,r <Plug>(coc-rename)
+  nmap <silent> ,f <Plug>(coc-format)
+  nmap <silent> <C-e> :CocCommand explorer<CR>
+
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      call CocActionAsync('doHover')
+    endif
+  endfunction
+'''
+
+# https://github.com/Shougo/dein.vim/issues/74
 [[plugins]]
 repo = 'junegunn/fzf'
 build = './install --bin'
@@ -58,57 +106,115 @@ hook_add = '''
   nnoremap <silent> <Leader>m :Gmerge<CR>
 '''
 
-
 [[plugins]]
-repo = 'neoclide/coc.nvim'
-rev = 'release'
-merged = 0
+repo = 'Shougo/defx.nvim'
+depends = ['defx-git', 'defx-icons']
 hook_add = '''
-  let g:coc_global_extensions = [
-    \ 'coc-diagnostic'
-    \, 'coc-tsserver'
-    \, 'coc-vetur'
-    \, 'coc-emmet'
-    \, 'coc-tabnine'
-    \, 'coc-css'
-    \, 'coc-html'
-    \, 'coc-markdownlint'
-    \, 'coc-solargraph'
-    \, 'coc-eslint'
-    \, 'coc-json'
-    \, 'coc-yank'
-    \, 'coc-yaml'
-    \, 'coc-prettier'
-    \, 'coc-explorer'
-    \, 'coc-snippets'
-  \]
-  command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
-  nmap <silent> [g <Plug>(coc-diagnostic-prev)
-  nmap <silent> ]g <Plug>(coc-diagnostic-next)
-  xmap ff  <Plug>(coc-format-selected)
-  nmap ff  <Plug>(coc-format-selected)
-  nmap <silent> L :<C-u>CocList<cr>
-  nnoremap <silent> K :call <SID>show_documentation()<CR>
-  nmap <silent> <C-]> <Plug>(coc-definition)
-  nmap <silent> <C-[> <Plug>(coc-type-definition)
-  nmap <silent> <C-u> <Plug>(coc-implementation)
-  nmap <silent> <C-t> <Plug>(coc-references)
-  nmap <silent> ,r <Plug>(coc-rename)
-  nmap <silent> ,f <Plug>(coc-format)
-  nmap <silent> <C-e> :CocCommand explorer<CR>
+nnoremap <silent> <C-e> :<C-u> Defx <CR> :e <CR>
 
-  function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-      execute 'h '.expand('<cword>')
-    else
-      call CocActionAsync('doHover')
-    endif
-  endfunction
+autocmd BufWritePost * call defx#redraw()
+autocmd BufEnter * call defx#redraw()
+
+call defx#custom#option('_', {
+  \ 'winwidth': 40,
+  \ 'split': 'vertical',
+  \ 'direction': 'topleft',
+  \ 'show_ignored_files': 1,
+  \ 'buffer_name': 'explorer',
+  \ 'toggle': 1,
+  \ 'resume': 1,
+  \ 'columns': 'indent:git:icons:filename:mark',
+  \ })
+
+autocmd FileType defx call s:defx_my_settings()
+function! s:defx_my_settings() abort
+  setlocal nonumber
+
+  " Define mappings
+  nnoremap <silent><buffer><expr> <CR>
+  \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> c
+  \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> m
+  \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> p
+  \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> l
+  \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> E
+  \ defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> P
+  \ defx#do_action('preview')
+  nnoremap <silent><buffer><expr> o
+  \ defx#do_action('open_tree', 'toggle')
+  nnoremap <silent><buffer><expr> A
+  \ defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> a
+  \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> M
+  \ defx#do_action('new_multiple_files')
+  nnoremap <silent><buffer><expr> C
+  \ defx#do_action('toggle_columns',
+  \                'mark:indent:icon:filename:type:size:time')
+  nnoremap <silent><buffer><expr> S
+  \ defx#do_action('toggle_sort', 'time')
+  nnoremap <silent><buffer><expr> d
+  \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r
+  \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> !
+  \ defx#do_action('execute_command')
+  nnoremap <silent><buffer><expr> x
+  \ defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> yy
+  \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> .
+  \ defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> ;
+  \ defx#do_action('repeat')
+  nnoremap <silent><buffer><expr> h
+  \ defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> ~
+  \ defx#do_action('cd')
+  nnoremap <silent><buffer><expr> q
+  \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+  \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+  \ defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr> j
+  \ line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> k
+  \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> <C-l>
+  \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> <C-g>
+  \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> cd
+  \ defx#do_action('change_vim_cwd')
+endfunction
 '''
 
+[[plugins]]
+repo = 'kristijanhusak/defx-git'
+hook_add = '''
+call defx#custom#column('git', 'indicators', {
+  \ 'Modified'  : '✹',
+  \ 'Staged'    : '✚',
+  \ 'Untracked' : '✭',
+  \ 'Renamed'   : '➜',
+  \ 'Unmerged'  : '═',
+  \ 'Ignored'   : '☒',
+  \ 'Deleted'   : '✖',
+  \ 'Unknown'   : '?'
+  \ })
+'''
 
 [[plugins]]
-repo = 'bronson/vim-trailing-whitespace'
+repo = 'kristijanhusak/defx-icons'
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
@@ -117,17 +223,17 @@ repo = 'jiangmiao/auto-pairs'
 repo = 'machakann/vim-sandwich'
 
 [[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+[[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
 hook_add = '''
   let g:indent_guides_enable_on_vim_startup = 1
 '''
 
 [[plugins]]
-repo = 'ryanoasis/vim-devicons'
-
-[[plugins]]
-repo = 'morhetz/gruvbox'
+repo = 'sainnhe/gruvbox-material'
 hook_add = '''
-  let g:gruvbox_italic=1
-  colorscheme gruvbox
+  let g:gruvbox_material_better_performance = 1
+  colorscheme gruvbox-material
 '''
