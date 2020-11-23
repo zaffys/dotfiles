@@ -157,17 +157,19 @@ inoremap <silent> jj <ESC>:<C-u>w<CR>
 " grep検索の実行後にQuickFix Listを表示する
 autocmd QuickFixCmdPost *grep* cwindow
 
-" Rubyファイルの場合はctags、その他はcoc.nvimによるジャンプを使用する
+" Rubyファイルの場合はctags、その他はLSPによるジャンプを使用する
 set tags=./tags;
 autocmd filetype ruby nnoremap <C-]> g<C-]>
 
 let g:python_host_prog = "/Users/leonard_5/.pyenv/versions/py2neovim/bin/python"
 let g:python3_host_prog = "/Users/leonard_5/.pyenv/versions/py3neovim/bin/python"
 
-" http://inari.hatenablog.com/entry/2014/05/05/231307
 """"""""""""""""""""""""""""""
-" 全角スペースの表示
+" Space highlight
 """"""""""""""""""""""""""""""
+highlight ExtraWhitespace cterm=underline ctermfg=lightblue guibg=darkgray
+match ExtraWhitespace /\s\+$/
+
 function! ZenkakuSpace()
   highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 endfunction
@@ -180,8 +182,6 @@ if has('syntax')
   augroup END
   call ZenkakuSpace()
 endif
-""""""""""""""""""""""""""""""
-
 """"""""""""""""""""""""""""""
 " emacs keybind              "
 """"""""""""""""""""""""""""""
