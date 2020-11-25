@@ -79,10 +79,6 @@ repo = 'mattn/emmet-vim'
 on_ft = ['html']
 
 [[plugins]]
-repo = 'tpope/vim-rails'
-on_ft = ['ruby']
-
-[[plugins]]
 repo = 'tpope/vim-endwise'
 on_ft = ['ruby']
 
