@@ -86,15 +86,15 @@ on_ft = ['ruby']
 repo = 'w0rp/ale'
 on_ft = ['ruby']
 hook_add = '''
-let g:ale_sign_error = '❌'
-let g:ale_sign_warning = '⚠️'
-let g:ale_fix_on_save = 1
-let g:ale_fixers = {
-\   'ruby': ['rubocop'],
-\}
+  let g:ale_sign_error = '❌'
+  let g:ale_sign_warning = '⚠️'
+  let g:ale_fix_on_save = 1
+  let g:ale_fixers = {
+  \   'ruby': ['rubocop'],
+  \}
 
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+  nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+  nmap <silent> <C-j> <Plug>(ale_next_wrap)
 '''
 
 [[plugins]]
@@ -102,31 +102,12 @@ repo = 'tpope/vim-dispatch'
 on_ft = ['ruby']
 
 [[plugins]]
-repo = 'janko/vim-test'
+repo = 'vim-test/vim-test'
+depends = ['vim-dispatch']
 on_ft = ['ruby']
 hook_add = '''
-nnoremap <Leader>tn :TestNearest<cr>
-nnoremap <Leader>tf :TestFile<cr>
+  let g:test#strategy = 'dispatch'
 
-let g:test#strategy = 'dispatch'
-let g:test#ruby#rspec#executable = ' '
-
-function! MakeTransformer(cmd) abort
-  return 'SPEC=' . trim(a:cmd) . ' make app/rspec'
-endfunction
-
-let g:test#custom_transformations = {'make': function('MakeTransformer')}
-let g:test#transformation = 'make'
-
-" function! DockerTransformer(cmd) abort
-"   let container_name = fnamemodify(a:position['file'], ':t:r')
-"   if container_name == ''
-"     return 'bundle exec ' . a:cmd
-"   else
-"     return 'docker-compose exec backend bundle exec ' . a:cmd
-"   endif
-" endfunction
-" let g:test#custom_transformations = {'docker': function('DockerTransformer')}
-" let g:test#transformation = 'docker'
+  nnoremap <Leader>tn :TestNearest<cr>
+  nnoremap <Leader>tf :TestFile<cr>
 '''
-
