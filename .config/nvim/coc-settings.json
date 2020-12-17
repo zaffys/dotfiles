@@ -1,4 +1,10 @@
 {
+  "explorer.file.showHiddenFiles": true,
+  "explorer.file.autoReveal": false,
+  "explorer.icon.enableVimDevicons": true,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.quitOnOpen": true,
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": [
     "javascript",
@@ -7,13 +13,9 @@
     "typescriptreact",
     "vue"
   ],
-  "javascript.suggestionActions.enabled": false,
   "prettier.disableSuccessMessage": true,
   "coc.preferences.formatOnSaveFiletypes": ["json", "graphql", "ruby"],
-  "tsserver.formatOnType": true,
   "diagnostic.enable": true,
   "coc.preferences.formatOnType": true,
-  "suggest.enablePreselect": true,
-  "explorer.quitOnOpen": true,
-  "explorer.icon.enableNerdfont": true
+  "suggest.enablePreselect": true
 }

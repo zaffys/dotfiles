@@ -23,6 +23,9 @@ merged = 0
 hook_add = '''
   let g:coc_global_extensions = [
     \ 'coc-diagnostic'
+    \, 'coc-tsserver'
+    \, 'coc-solargraph'
+    \, 'coc-vetur'
     \, 'coc-tabnine'
     \, 'coc-explorer'
     \, 'coc-markdownlint'
