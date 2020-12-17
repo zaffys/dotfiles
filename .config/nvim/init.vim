@@ -141,7 +141,11 @@ set fileformats=unix,dos,mac
 " 外部でファイルに変更がされた場合は読みなおす
 set autoread
 " 警告を表示する
-set signcolumn=yes
+if has("patch-8.1.1564")
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 "スクロール時に一番下までカーソルが移動しない
 set scrolloff=5
 "backspaceの機能設定(字下げ、行末、挿入の開始点を超えて削除)
@@ -158,8 +162,8 @@ inoremap <silent> jj <ESC>:<C-u>w<CR>
 autocmd QuickFixCmdPost *grep* cwindow
 
 " Rubyファイルの場合はctags、その他はLSPによるジャンプを使用する
-" set tags=./tags;
-" autocmd filetype ruby nnoremap <C-]> g<C-]>
+set tags=./tags;
+autocmd filetype ruby nnoremap <C-]> g<C-]>
 
 let g:python_host_prog = "/Users/leonard_5/.pyenv/versions/py2neovim/bin/python"
 let g:python3_host_prog = "/Users/leonard_5/.pyenv/versions/py3neovim/bin/python"

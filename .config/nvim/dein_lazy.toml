@@ -106,6 +106,12 @@ repo = 'vim-test/vim-test'
 depends = ['vim-dispatch']
 on_ft = ['ruby']
 hook_add = '''
+  function! DockerTransformer(cmd) abort
+    return 'docker-compose exec web ' . a:cmd
+  endfunction
+
+  let g:test#custom_transformations = {'docker': function('DockerTransformer')}
+  let g:test#transformation = 'docker'
   let g:test#strategy = 'dispatch'
 
   nnoremap <Leader>tn :TestNearest<cr>

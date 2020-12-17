@@ -164,6 +164,7 @@ alias gre='git restore'
 alias vi='nvim'
 alias vanish='git branch | grep -v "master" | grep -v "develop" | xargs git branch -D'
 alias xclean='rm -rf ~/Library/Developer/Xcode/DerivedData'
+alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
 
 # 色を使用出来るようにする
 autoload -Uz colors

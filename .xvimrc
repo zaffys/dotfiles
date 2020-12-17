@@ -16,7 +16,5 @@ set hlsearch
 set wrapscan
 " 行番号を表示する
 set number
-" 行番号を相対表示する
-set relativenumber
 " insert mode to normal mode
 inoremap jj <ESC>
