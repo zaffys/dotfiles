@@ -74,13 +74,13 @@ merged = '0'
 repo = 'junegunn/fzf.vim'
 depends = 'fzf'
 hook_add = '''
-  nnoremap <silent> <Leader>f :Files<CR>
-  nnoremap <silent> <Leader>F :GFiles?<CR>
-  nnoremap <silent> <Leader><Leader> :Buffers<CR>
-  nnoremap <silent> <Leader>l :BLines<CR>
-  nnoremap <silent> <Leader>. :Snippets<CR>
-  nnoremap <silent> <Leader>h :History<CR>
-  nnoremap <silent> <Leader>g :Rg<CR>
+  nnoremap <silent> <leader>f :Files<CR>
+  nnoremap <silent> <leader>F :GFiles?<CR>
+  nnoremap <silent> <leader><leader> :Buffers<CR>
+  nnoremap <silent> <leader>l :BLines<CR>
+  nnoremap <silent> <leader>. :Snippets<CR>
+  nnoremap <silent> <leader>h :History<CR>
+  nnoremap <silent> <leader>g :Rg<CR>
 
   command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
@@ -97,16 +97,19 @@ repo = 'sheerun/vim-polyglot'
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_add = '''
-  nnoremap <silent> <Leader>s :Gstatus<CR>
-  nnoremap <silent> <Leader>a :Gwrite<CR>
-  nnoremap <silent> <Leader>c :Gcommit<CR>
-  nnoremap <silent> <Leader>b :Gblame<CR>
-  nnoremap <silent> <Leader>d :Gdiff<CR>
-  nnoremap <silent> <Leader>m :Gmerge<CR>
+  nnoremap <silent> <leader>s :Gstatus<CR>
+  nnoremap <silent> <leader>a :Gwrite<CR>
+  nnoremap <silent> <leader>c :Gcommit<CR>
+  nnoremap <silent> <leader>b :Gblame<CR>
+  nnoremap <silent> <leader>d :Gdiff<CR>
+  nnoremap <silent> <leader>m :Gmerge<CR>
 '''
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
@@ -121,6 +124,60 @@ repo = 'tomtom/tcomment_vim'
 repo = 'nathanaelkane/vim-indent-guides'
 hook_add = '''
   let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_exclude_filetypes = ['coc-explorer']
+'''
+
+[[plugins]]
+repo = 'romgrk/barbar.nvim'
+hook_add = '''
+nnoremap <silent> <C-s> :BufferOrderByDirectory<CR>
+nnoremap <silent> <C-h> :BufferPrevious<CR>
+nnoremap <silent> <C-l> :BufferNext<CR>
+nnoremap <silent> <C-w> :BufferClose<CR>
+
+" NOTE: This variable doesn't exist before barbar runs. Create it before
+"       setting any option.
+let bufferline = {}
+
+" Enable/disable animations
+let bufferline.animation = v:true
+
+" Enable/disable auto-hiding the tab bar when there is a single buffer
+let bufferline.auto_hide = v:false
+
+" Enable/disable icons
+" if set to 'numbers', will show buffer index in the tabline
+" if set to 'both', will show buffer index and icons in the tabline
+let bufferline.icons = v:true
+
+" Configure icons on the bufferline.
+let bufferline.icon_separator_active = '▎'
+let bufferline.icon_separator_inactive = '▎'
+let bufferline.icon_close_tab = ''
+let bufferline.icon_close_tab_modified = '●'
+
+" Enable/disable close button
+let bufferline.closable = v:true
+
+" Enables/disable clickable tabs
+"  - left-click: go to buffer
+"  - middle-click: delete buffer
+let bufferline.clickable = v:true
+
+" If set, the letters for each buffer in buffer-pick mode will be
+" assigned based on their name. Otherwise or in case all letters are
+" already assigned, the behavior is to assign letters in order of
+" usability (see order below)
+let bufferline.semantic_letters = v:true
+
+" New buffer letters are assigned in this order. This order is
+" optimal for the qwerty keyboard layout but might need adjustement
+" for other layouts.
+let bufferline.letters =
+  \ 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP'
+
+" Sets the maximum padding width with which to surround each tab
+let bufferline.maximum_padding = 4
 '''
 
 [[plugins]]
