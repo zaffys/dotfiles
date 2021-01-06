@@ -107,7 +107,12 @@ depends = ['vim-dispatch']
 on_ft = ['ruby']
 hook_add = '''
   function! DockerTransformer(cmd) abort
-    return 'docker-compose exec web ' . a:cmd
+    let container_id = system("docker ps | grep 3000->3000 | awk '{print $1}'")
+    if container_id != ''
+      return 'docker exec ' . container_id . ' bundle exec ' . a:cmd
+    else
+      return 'bundle exec ' . a:cmd
+    endif
   endfunction
 
   let g:test#custom_transformations = {'docker': function('DockerTransformer')}
