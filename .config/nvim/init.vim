@@ -162,8 +162,8 @@ inoremap <silent> jj <ESC>:<C-u>w<CR>
 autocmd QuickFixCmdPost *grep* cwindow
 
 " Rubyファイルの場合はctags、その他はLSPによるジャンプを使用する
-set tags=./tags;
-autocmd filetype ruby nnoremap <C-]> g<C-]>
+" set tags=./tags;
+" autocmd filetype ruby nnoremap <C-]> g<C-]>
 
 let g:python_host_prog = "/Users/leonard_5/.pyenv/versions/py2neovim/bin/python"
 let g:python3_host_prog = "/Users/leonard_5/.pyenv/versions/py3neovim/bin/python"
