@@ -107,7 +107,7 @@ depends = ['vim-dispatch']
 on_ft = ['ruby']
 hook_add = '''
   function! DockerTransformer(cmd) abort
-    let container_id = system("docker ps | grep 3000->3000 | awk '{print $1}'")
+    let container_id = system("docker ps | grep 3000 | awk '{print $1}'")
     if container_id != ''
       return 'docker exec ' . container_id . ' bundle exec ' . a:cmd
     else
