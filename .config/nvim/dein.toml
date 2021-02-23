@@ -121,13 +121,6 @@ repo = 'machakann/vim-sandwich'
 repo = 'tomtom/tcomment_vim'
 
 [[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
-hook_add = '''
-  let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_exclude_filetypes = ['coc-explorer']
-'''
-
-[[plugins]]
 repo = 'romgrk/barbar.nvim'
 hook_add = '''
 nnoremap <silent> <C-s> :BufferOrderByDirectory<CR>
@@ -178,6 +171,14 @@ let bufferline.letters =
 
 " Sets the maximum padding width with which to surround each tab
 let bufferline.maximum_padding = 4
+'''
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+hook_add = '''
+let g:indentLine_enabled = 0
+let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_leadingSpaceChar = '·'
 '''
 
 [[plugins]]

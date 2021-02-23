@@ -67,7 +67,7 @@ hook_add = '''
 [[plugins]]
 repo = 'styled-components/vim-styled-components'
 rev = 'main'
-on_ft = ['javascript', 'typescript', 'javascript.jsx', 'typescript.tsx']
+on_ft = ['javascript.jsx', 'typescript.tsx']
 
 [[plugins]]
 repo = 'iamcco/markdown-preview.nvim'

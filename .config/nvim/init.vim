@@ -90,17 +90,17 @@ set background=dark
 " タブ入力を複数の空白入力に置き換える
 set expandtab
 " 検索ワードの最初の文字を入力した時点で検索を開始する
-set incsearch"
+set incsearch
 " 保存されていないファイルがあるときでも別のファイルを開けるようにする
 set hidden
 " 不可視文字を表示する
 set list
-" タブと行の続きを可視化する
-set listchars=tab:>\ ,extends:<
+" 任意の文字をを可視化する
+set listchars=tab:>-,trail:·,extends:>,precedes:<,nbsp:%
 " 行番号を表示する
 set number
 " 行番号を相対表示しない
- set norelativenumber
+set norelativenumber
 " 対応する括弧やブレースを表示する
 set showmatch
 " 改行時に前の行のインデントを継続する
@@ -171,9 +171,6 @@ let g:python3_host_prog = "/Users/leonard_5/.pyenv/versions/py3neovim/bin/python
 """"""""""""""""""""""""""""""
 " Space highlight
 """"""""""""""""""""""""""""""
-highlight ExtraWhitespace cterm=underline ctermfg=lightblue guibg=darkgray
-match ExtraWhitespace /\s\+$/
-
 function! ZenkakuSpace()
   highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 endfunction
