@@ -165,8 +165,8 @@ autocmd QuickFixCmdPost *grep* cwindow
 " set tags=./tags;
 " autocmd filetype ruby nnoremap <C-]> g<C-]>
 
-let g:python_host_prog = "/Users/leonard_5/.pyenv/versions/py2neovim/bin/python"
-let g:python3_host_prog = "/Users/leonard_5/.pyenv/versions/py3neovim/bin/python"
+let g:python_host_prog = "/Users/reona5/.pyenv/versions/py2neovim/bin/python"
+let g:python3_host_prog = "/Users/reona5/.pyenv/versions/py3neovim/bin/python"
 
 """"""""""""""""""""""""""""""
 " Space highlight

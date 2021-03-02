@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -ue
 
+#--------------------------------------------------------------#
+##          Functions                                         ##
+#--------------------------------------------------------------#
+
 helpmsg() {
   command echo "Usage: $0 [--help | -h]" 0>&2
   command echo ""
@@ -31,6 +35,12 @@ link_to_homedir() {
   fi
 }
 
+#--------------------------------------------------------------#
+##          Main                                              ##
+#--------------------------------------------------------------#
+
+IS_INSTALL="true"
+
 while [ $# -gt 0 ];do
   case ${1} in
     --debug|-d)
@@ -40,12 +50,21 @@ while [ $# -gt 0 ];do
       helpmsg
       exit 1
       ;;
+    install)
+      IS_INSTALL="true"
+      ;;
     *)
       ;;
   esac
   shift
 done
 
-link_to_homedir
-git config --global include.path "~/.gitconfig"
-command echo -e "\e[1;36m Install completed!!!! \e[m"n
+if [[ "$IS_INSTALL" = true ]];then
+  link_to_homedir
+  command echo ""
+  command echo "#####################################################"
+  command echo -e "\e[1;36m $(basename $0) install success!!! \e[m"
+  command echo "#####################################################"
+  command echo ""
+fi
+

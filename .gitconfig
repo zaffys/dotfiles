@@ -2,7 +2,7 @@
   email = shimada.reona@gmail.com
 	name = reona5
 [core]
-	excludesfile = /Users/leonard_5/.gitignore_global
+	excludesfile = /Users/reona5/.gitignore_global
 	editor = nvim
 [alias]
 	ci = commit

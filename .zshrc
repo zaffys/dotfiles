@@ -4,7 +4,7 @@ export XDG_CONFIG_HOME=~/.config
 export PATH=$PATH:$GOPATH/bin
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/leonard_5/.oh-my-zsh"
+export ZSH="/Users/reona5/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -96,8 +96,8 @@ autoload -U compinit && compinit -u
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH="$PATH:/Users/leonard_5/development/flutter/bin"
-export ANDROID_HOME="/Users/leonard_5/Library/Android/sdk"
+export PATH="$PATH:/Users/reona5/development/flutter/bin"
+export ANDROID_HOME="/Users/reona5/Library/Android/sdk"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
