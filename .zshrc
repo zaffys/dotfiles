@@ -200,10 +200,6 @@ setopt hist_ignore_dups
 # 履歴をインクリメンタルに追加
 setopt inc_append_history
 
-# fzf
-export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
-
 # 同じコマンドをヒストリに残さない
 setopt hist_ignore_all_dups
 
@@ -222,7 +218,29 @@ eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
+export FZF_TMUX=1
+
+## fbr - checkout git branch
+fbr() {
+  local branches branch
+  branches=$(git branch -vv) &&
+  branch=$(echo "$branches" | fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+# fbrm - checkout git branch (including remote branches)
+fbrm() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
 
 export PATH="/usr/local/opt/libxml2/bin:$PATH"
 

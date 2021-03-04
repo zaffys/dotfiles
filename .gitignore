@@ -7,9 +7,21 @@
 !/.bin/**
 !/.bin.local
 !/.config/
+!/.config/anyenv/
+!/.config/anyenv/anyenv-install/
+!/.config/anyenv/anyenv-install/**
+!/.config/coc/
+!/.config/coc/
+!/.config/coc/extensions/
+!/.config/coc/extensions/db.json
+!/.config/coc/extensions/package.json
+!/.config/coc/extensions/coc-tabnine-data
+!/.config/coc/extensions/coc-tabnine-data/**
 !/.config/gh/
 !/.config/gh/state.yml
 !/.config/gh/config.yml
+!/.config/iterm2/
+!/.config/iterm2/AppSupport
 !/.config/nvim/
 !/.config/nvim/coc-settings.json
 !/.config/nvim/dein.toml
@@ -30,6 +42,7 @@
 !/.xvimrc
 !/.zshrc
 !/.zshenv
+!/.zprofile
 
 !/README.md
 !/LICENSE
