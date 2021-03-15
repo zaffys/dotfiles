@@ -15,8 +15,6 @@
 !/.config/coc/extensions/
 !/.config/coc/extensions/db.json
 !/.config/coc/extensions/package.json
-!/.config/coc/extensions/coc-tabnine-data
-!/.config/coc/extensions/coc-tabnine-data/**
 !/.config/gh/
 !/.config/gh/state.yml
 !/.config/gh/config.yml

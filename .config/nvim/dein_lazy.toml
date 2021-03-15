@@ -107,9 +107,11 @@ depends = ['vim-dispatch']
 on_ft = ['ruby']
 hook_add = '''
   function! DockerTransformer(cmd) abort
-    let container_id = system("docker ps | grep 3000 | awk '{print $1}'")
-    if container_id != ''
-      return 'docker exec ' . container_id . ' bundle exec ' . a:cmd
+    let container_name = system("docker-compose ps | grep 3000 | awk '{print $1}'")
+    if matchstr(container_name, "_app_") == "_app_"
+      return 'docker-compose exec app bundle exec ' . a:cmd
+    elseif matchstr(container_name, "_web_") == "_web_"
+      return 'docker-compose exec web bundle exec ' . a:cmd
     else
       return 'bundle exec ' . a:cmd
     endif
