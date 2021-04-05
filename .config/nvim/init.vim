@@ -140,6 +140,8 @@ set fileencodings=ucs-boms,utf-8,euc-jp,cp932
 set fileformats=unix,dos,mac
 " 外部でファイルに変更がされた場合は読みなおす
 set autoread
+" 正規表現の高速化
+set regexpengine=0
 " 警告を表示する
 if has("patch-8.1.1564")
   set signcolumn=number
