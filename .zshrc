@@ -104,7 +104,9 @@ export ANDROID_HOME="/Users/reona5/Library/Android/sdk"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
+
+alias -g @g='| grep'
+alias -g @l='| less'
 
 alias ssh='TERM=xterm-256color ssh'
 alias be='bundle exec'
@@ -170,6 +172,9 @@ alias vi='nvim'
 alias vanish='git branch | grep -v "master" | grep -v "develop" | xargs git branch -D'
 alias xclean='rm -rf ~/Library/Developer/Xcode/DerivedData'
 alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
 
 # 色を使用出来るようにする
 autoload -Uz colors
