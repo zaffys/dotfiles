@@ -107,6 +107,7 @@ export ANDROID_HOME="/Users/reona5/Library/Android/sdk"
 
 alias -g @g='| grep'
 alias -g @l='| less'
+alias -g @f='--force-with-lease'
 
 alias ssh='TERM=xterm-256color ssh'
 alias be='bundle exec'
@@ -214,15 +215,6 @@ setopt hist_ignore_space
 
 # ヒストリに保存するときに余分なスペースを削除する
 setopt hist_reduce_blanks
-
-eval "$(rbenv init -)"
-export PATH="/usr/local/sbin:$PATH"
-
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
-eval "$(rbenv init -)"
-
-export PATH=" /usr/local/opt/python@3.9/libexec/bin:$PATH"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

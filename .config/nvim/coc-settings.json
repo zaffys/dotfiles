@@ -5,15 +5,9 @@
   "explorer.previewAction.onHover": false,
   "explorer.quitOnOpen": true,
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue"
-  ],
   "prettier.disableSuccessMessage": true,
-  "coc.preferences.formatOnSaveFiletypes": ["json", "graphql", "ruby"],
+  "coc.preferences.formatOnSaveFiletypes": ["css", "json", "graphql", "Markdown", "ruby"],
+  "tsserver.enableJavascript": false,
   "diagnostic.enable": true,
   "coc.preferences.formatOnType": true,
   "suggest.enablePreselect": true

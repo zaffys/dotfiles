@@ -4,6 +4,11 @@ lang en_US.UTF-8
 " leader setting
 let mapleader = "\<Space>"
 
+" enable to see backquote
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+
 " Enable true color
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
