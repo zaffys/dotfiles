@@ -1,14 +1,14 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": ["css", "json", "markdown"],
+  "coc.preferences.formatOnType": true,
+  "eslint.autoFixOnSave": true,
   "explorer.file.showHiddenFiles": true,
   "explorer.file.autoReveal": false,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
   "explorer.quitOnOpen": true,
-  "eslint.autoFixOnSave": true,
   "prettier.disableSuccessMessage": true,
-  "coc.preferences.formatOnSaveFiletypes": ["css", "json", "graphql", "Markdown", "ruby"],
-  "tsserver.enableJavascript": false,
-  "diagnostic.enable": true,
-  "coc.preferences.formatOnType": true,
-  "suggest.enablePreselect": true
+  "suggest.enablePreselect": true,
+  "solargraph.diagnostics": true,
+  "tsserver.enableJavascript": false
 }

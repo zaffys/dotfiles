@@ -14,6 +14,12 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 
+" Setting for running neovim in VSCode
+if exists('g:vscode')
+    " VSCode extension
+else
+    " ordinary neovim
+endif
 """"""""""""""""""""""""""""""
 " dein.vim
 """"""""""""""""""""""""""""""
