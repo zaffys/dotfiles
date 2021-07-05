@@ -93,7 +93,25 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'sheerun/vim-polyglot'
+repo = 'nvim-treesitter/nvim-treesitter'
+build = 'call TSUpdate'
+merged = '0'
+hook_add = '''
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    disable = {
+      "haskell",
+    }
+  },
+  ensure_installed = 'maintained',
+  indent = {
+    enable = true,
+  },
+}
+EOF
+'''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -105,9 +123,6 @@ hook_add = '''
   nnoremap <silent> <leader>d :Gdiff<CR>
   nnoremap <silent> <leader>m :Gmerge<CR>
 '''
-
-[[plugins]]
-repo = 'ryanoasis/vim-devicons'
 
 [[plugins]]
 repo = 'kyazdani42/nvim-web-devicons'
