@@ -63,7 +63,7 @@ if [[ "$IS_INSTALL" = true ]];then
   link_to_homedir
   command echo ""
   command echo "#####################################################"
-  command echo -e "\e[1;36m $(basename $0) install success!!! \e[m"
+  command echo -e "$(basename $0) install success!!!"
   command echo "#####################################################"
   command echo ""
 fi
