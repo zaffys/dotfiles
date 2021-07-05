@@ -20,6 +20,7 @@ if exists('g:vscode')
 else
     " ordinary neovim
 endif
+
 """"""""""""""""""""""""""""""
 " dein.vim
 """"""""""""""""""""""""""""""
@@ -50,6 +51,20 @@ syntax enable
 if dein#check_install()
   call dein#install()
 endif
+
+
+" NOTE: https://github.com/nvim-treesitter/nvim-treesitter/issues/270#issuecomment-725883316jI
+""""""""""""""""""""""""""""""
+" nvim-treesitter configs
+""""""""""""""""""""""""""""""
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = 'maintained',
+  highlight = {
+    enable = true,
+  },
+}
+EOF
 
 """"""""""""""""""""""""""""""
 " 各種オプションの設定

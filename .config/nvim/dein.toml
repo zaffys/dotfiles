@@ -26,14 +26,12 @@ hook_add = '''
     \, 'coc-tsserver'
     \, 'coc-solargraph'
     \, 'coc-vetur'
-    \, 'coc-tabnine'
     \, 'coc-explorer'
     \, 'coc-markdownlint'
     \, 'coc-eslint'
     \, 'coc-json'
     \, 'coc-yaml'
     \, 'coc-prettier'
-    \, 'coc-fzf-preview'
     \, 'coc-spell-checker'
   \]
 
@@ -68,7 +66,7 @@ hook_add = '''
 # https://github.com/Shougo/dein.vim/issues/74
 [[plugins]]
 repo = 'junegunn/fzf'
-build = './install --bin'
+build = './install --all'
 merged = '0'
 
 [[plugins]]
@@ -97,20 +95,6 @@ repo = 'nvim-treesitter/nvim-treesitter'
 build = 'call TSUpdate'
 merged = '0'
 hook_add = '''
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-    disable = {
-      "haskell",
-    }
-  },
-  ensure_installed = 'maintained',
-  indent = {
-    enable = true,
-  },
-}
-EOF
 '''
 
 [[plugins]]
