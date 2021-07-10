@@ -1,11 +1,19 @@
 lang en_US.UTF-8
 "return" 2>&- || "exit"
 
-" leader の設定
+" leader setting
 let mapleader = "\<Space>"
 
-" colorscheme の設定
-colorscheme gruvbox
+" enable to see backquote
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+
+" Enable true color
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+
 """"""""""""""""""""""""""""""
 " dein.vim
 """"""""""""""""""""""""""""""
@@ -35,6 +43,10 @@ endif
 """"""""""""""""""""""""""""""
 " 各種オプションの設定
 """"""""""""""""""""""""""""""
+" 自動保存
+set autowriteall
+autocmd CursorHold *  wall
+autocmd CursorHoldI *  wall
 " ビーブ音を消す
 set belloff=all
 " キーコードシーケンスの終了待機時間の短縮
@@ -52,7 +64,7 @@ set laststatus=2
 " ステータス行に表示させる情報の指定
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 " ステータス行に現在のgitブランチを表示する
-let statusline+=%{fugitive#statusline()}
+set statusline+=%{fugitive#statusline()}
 " ウインドウのタイトルバーにファイルのパス情報等を表示する
 set title
 " コマンドラインモードで<Tab>キーによるファイル名補完を有効にする
@@ -69,6 +81,8 @@ set smartcase
 set ignorecase
 " 最後尾まで検索を終えたら次の検索で先頭に移る
 set wrapscan
+" 置換え時にインタラクティブに変更を反映する
+set inccommand=split
 " 検索結果をハイライト表示する
 set hlsearch
 " 暗い背景色に合わせた配色にする
@@ -76,17 +90,17 @@ set background=dark
 " タブ入力を複数の空白入力に置き換える
 set expandtab
 " 検索ワードの最初の文字を入力した時点で検索を開始する
-set incsearch"
+set incsearch
 " 保存されていないファイルがあるときでも別のファイルを開けるようにする
 set hidden
 " 不可視文字を表示する
 set list
-" タブと行の続きを可視化する
-set listchars=tab:>\ ,extends:<
+" 任意の文字をを可視化する
+set listchars=tab:>-,trail:·,extends:>,precedes:<,nbsp:%
 " 行番号を表示する
 set number
-" 行番号を相対表示する
-set relativenumber
+" 行番号を相対表示しない
+set norelativenumber
 " 対応する括弧やブレースを表示する
 set showmatch
 " 改行時に前の行のインデントを継続する
@@ -114,13 +128,33 @@ set formatoptions=q
 set synmaxcol=200
 " clipboard にコピー
 set clipboard+=unnamed
-" 文字化け対策
+"ファイル読み込み時の文字コードの設定
 set encoding=utf-8
+"Vim script内でマルチバイト文字を使う際の設定
+scriptencoding uft-8
+" 保存時の文字コード
+set fileencoding=utf-8
+" 読み込み時の文字コードの自動判別. 左側が優先される
+set fileencodings=ucs-boms,utf-8,euc-jp,cp932
+" 改行コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac
 " 外部でファイルに変更がされた場合は読みなおす
 set autoread
-" ○や□の文字が崩れる問題を回避
-set ambiwidth=double
+" 正規表現の高速化
+set regexpengine=0
+" 警告を表示する
+if has("patch-8.1.1564")
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+"スクロール時に一番下までカーソルが移動しない
+set scrolloff=5
+"backspaceの機能設定(字下げ、行末、挿入の開始点を超えて削除)
+set backspace=2
+" Markdownに画像をペーストする
+nnoremap <Leader>p <C-c>:r! image_paste_for_vim_markdown <CR>
+
 " leader mapping
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>e :e<CR>
@@ -129,9 +163,8 @@ inoremap <silent> jj <ESC>:<C-u>w<CR>
 " grep検索の実行後にQuickFix Listを表示する
 autocmd QuickFixCmdPost *grep* cwindow
 
-" http://inari.hatenablog.com/entry/2014/05/05/231307
 """"""""""""""""""""""""""""""
-" 全角スペースの表示
+" Space highlight
 """"""""""""""""""""""""""""""
 function! ZenkakuSpace()
   highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
@@ -146,6 +179,44 @@ if has('syntax')
   call ZenkakuSpace()
 endif
 """"""""""""""""""""""""""""""
+" emacs keybind              "
+""""""""""""""""""""""""""""""
+" insert mode
+imap <C-p> <Up>
+imap <C-n> <Down>
+imap <C-b> <Left>
+imap <C-f> <Right>
+imap <C-a> <C-o>:call <SID>home()<CR>
+imap <C-e> <End>
+imap <C-d> <Del>
+imap <C-h> <BS>
+imap <C-k> <C-r>=<SID>kill()<CR>
+
+function! s:home()
+  let start_column = col('.')
+  normal! ^
+  if col('.') == start_column
+    normal! 0
+  endif
+  return ''
+endfunction
+
+function! s:kill()
+  let [text_before, text_after] = s:split_line()
+  if len(text_after) == 0
+    normal! J
+  else
+    call setline(line('.'), text_before)
+  endif
+  return ''
+endfunction
+
+function! s:split_line()
+  let line_text = getline(line('.'))
+  let text_after  = line_text[col('.')-1 :]
+  let text_before = (col('.') > 1) ? line_text[: col('.')-2] : ''
+  return [text_before, text_after]
+endfunction
 
 """"""""""""""""""""""""""""""
 " 最後のカーソル位置を復元する

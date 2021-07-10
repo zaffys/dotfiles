@@ -191,10 +191,6 @@ inoremap <silent> jj <ESC>:<C-u>w<CR>
 " grep検索の実行後にQuickFix Listを表示する
 autocmd QuickFixCmdPost *grep* cwindow
 
-" Rubyファイルの場合はctags、その他はLSPによるジャンプを使用する
-" set tags=./tags;
-" autocmd filetype ruby nnoremap <C-]> g<C-]>
-
 let g:python_host_prog = "/Users/reona5/.pyenv/versions/py2neovim/bin/python"
 let g:python3_host_prog = "/Users/reona5/.pyenv/versions/py3neovim/bin/python"
 
