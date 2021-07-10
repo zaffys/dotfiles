@@ -250,3 +250,4 @@ ghq-fzf() {
 }
 zle -N ghq-fzf
 bindkey '^g' ghq-fzf
+fpath+=${ZDOTDIR:-~}/.zsh_functions

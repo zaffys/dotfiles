@@ -7,12 +7,13 @@
 !/.bin/**
 !/.bin.local
 !/.config/
+!/.config/alacritty/
+!/.config/alacritty/alacritty.yml
 !/.config/anyenv/
 !/.config/anyenv/anyenv-install/
 !/.config/anyenv/anyenv-install/**
 !/.config/coc/
 !/.config/coc/extensions/
-!/.config/coc/extensions/db.json
 !/.config/coc/extensions/package.json
 !/.config/gh/
 !/.config/gh/state.yml
@@ -24,6 +25,7 @@
 !/.config/nvim/dein.toml
 !/.config/nvim/dein_lazy.toml
 !/.config/nvim/init.vim
+!/.fzf.zsh
 !/.gitconfig
 !/.github/
 !/.github/**

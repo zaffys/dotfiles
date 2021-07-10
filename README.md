@@ -1,7 +1,7 @@
 # dotfiles
 
 The dotfiles updated from time to time.
-Editor: NeoVim; Shell: zsh; Terminal: iTerm2, tmux; OS: MacOS Catalina
+Editor: NeoVim; Shell: zsh; Terminal: Alacritty, tmux; OS: MacOS Big Sur
 
 ## Usage
 

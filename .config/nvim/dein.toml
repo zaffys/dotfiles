@@ -5,7 +5,7 @@ repo = '~/.cache/dein/repos/github.com/Shougo/dein.vim'
 repo = 'itchyny/lightline.vim'
 hook_add = '''
   let g:lightline = {
-    \ 'colorscheme': 'seoul256',
+    \ 'colorscheme': 'nord',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -88,14 +88,27 @@ hook_add = '''
     \ call fzf#vim#grep(
     \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
     \   fzf#vim#with_preview({'options': '--exact --delimiter : --nth 3..'}), <bang>0)
+
+  let g:fzf_colors =
+    \ { 'fg':      ['fg', 'Normal'],
+    \ 'bg':      ['bg', 'Normal'],
+    \ 'hl':      ['fg', 'Comment'],
+    \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+    \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+    \ 'hl+':     ['fg', 'Statement'],
+    \ 'info':    ['fg', 'PreProc'],
+    \ 'border':  ['fg', 'Ignore'],
+    \ 'prompt':  ['fg', 'Conditional'],
+    \ 'pointer': ['fg', 'Exception'],
+    \ 'marker':  ['fg', 'Keyword'],
+    \ 'spinner': ['fg', 'Label'],
+    \ 'header':  ['fg', 'Comment'] }
 '''
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
 build = 'call TSUpdate'
 merged = '0'
-hook_add = '''
-'''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -183,8 +196,7 @@ let g:indentLine_fileTypeExclude = ['coc-explorer']
 '''
 
 [[plugins]]
-repo = 'sainnhe/gruvbox-material'
+repo = 'arcticicestudio/nord-vim'
 hook_add = '''
-  let g:gruvbox_material_better_performance = 1
-  colorscheme gruvbox-material
+  colorscheme nord
 '''
