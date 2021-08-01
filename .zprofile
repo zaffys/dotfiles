@@ -1,7 +1,26 @@
-eval "$(anyenv init -)"
-eval "$(nodenv init -)"
-eval "$(rbenv init -)"
-eval "$(goenv init -)"
+anyenv() {
+  unfunction "$0"
+  source <(anyenv init -)
+  $0 "$@"
+}
+
+nodenv() {
+  unfunction "$0"
+  source <(nodenv init -)
+  $0 "$@"
+}
+
+rbenv() {
+  unfunction "$0"
+  source <(rbenv init -)
+  $0 "$@"
+}
+
+goenv() {
+  unfunction "$0"
+  source <(goenv init -)
+  $0 "$@"
+}
 
 export LANG=en_US.UTF-8
 export ANYENVPATH="$HOME/.anyenv/bin:$PATH"
