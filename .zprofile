@@ -2,6 +2,7 @@ eval "$(anyenv init -)"
 eval "$(nodenv init -)"
 eval "$(rbenv init -)"
 eval "$(goenv init -)"
+
 export PATH="$HOME/.yarn/bin:$PATH"
 export RAILS_SERVE_STATIC_FILES=1
 export PATH="/usr/local/opt/libxml2/bin:$PATH"
