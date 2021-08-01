@@ -13,3 +13,4 @@ export PATH=/opt/homebrew/opt/python@3.9/libexec/bin:$PATH
 export GOPATH="$HOME/go"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
+export STARSHIP_CONFIG=~/.zsh/starship/config.toml

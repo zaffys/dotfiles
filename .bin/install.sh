@@ -22,11 +22,10 @@ link_to_homedir() {
   if [[ "$HOME" != "$dotdir" ]];then
     for f in $dotdir/.??*; do
       [[ `basename $f` == ".git" || `basename $f` == ".DS_Store" ]] && continue
-      if [[ -e "$HOME/.dotfiles_backup/`basename $f`" ]];then
-        continue
-      fi
-      if [[ -e "$HOME/`basename $f`" ]];then
+      if [[ ! -e "$HOME/.dotfiles_backup/`basename $f`" && -e "$HOME/`basename $f`" ]];then
         command mv "$HOME/`basename $f`" "$HOME/.dotfiles_backup"
+      elif [[ -e "$HOME/`basename $f`" ]];then
+        command rm -rf "$HOME/`basename $f`"
       fi
       command ln -snf $f $HOME
     done

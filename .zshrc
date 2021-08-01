@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
@@ -26,10 +19,14 @@ zinit light-mode for \
     zinit-zsh/z-a-patch-dl \
     zinit-zsh/z-a-bin-gem-node
 
+zinit ice from"gh-r" as"program" atload'!eval $(starship init zsh)'
+zinit light starship/starship
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma/fast-syntax-highlighting
+zinit load zdharma/history-search-multi-word
+
 ### End of Zinit's installer chunk
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export LANG=en_US.UTF-8
 
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -38,17 +35,8 @@ alias -g @l='| less'
 alias -g @f='--force-with-lease'
 
 alias ssh='TERM=xterm-256color ssh'
-alias be='bundle exec'
-alias ber='bundle exec ruby'
-alias br='bin/rails s'
-alias bc='bin/rails c'
-alias brs='bin/rspec'
-alias bers='bundle exec rails s'
-alias berc='bundle exec rails c'
 alias dc='docker-compose'
 alias da='docker attach'
-alias forget='!git add . && git commit --amend'
-alias g='git'
 alias gst='git status'
 alias gb='git branch'
 alias gbm='git branch -m'
@@ -60,13 +48,8 @@ alias gg='git grep'
 alias ga='git add .'
 alias gd='git diff'
 alias gl='git log'
-alias gl='git log --oneline'
-alias gfu='git fetch upstream'
-alias gfo='git fetch origin'
-alias gfp='git fetch -p'
-alias gmod='git merge origin/develop'
-alias gmud='git merge upstream/develop'
-alias gmom='git merge origin/master'
+alias gf='git fetch'
+alias gm='git merge'
 alias gca='git commit --amend'
 alias gcm='git commit -m'
 alias grm='git rebase master'
@@ -76,7 +59,7 @@ alias grid='git rebase -i develop'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias grs='git rebase --skip'
-alias gps='git push'
+alias gp='git push'
 alias gpo='git push origin'
 alias gpom='git push origin master'
 alias gpod='git push origin develop'
@@ -99,54 +82,15 @@ alias grhh='git reset --hard HEAD^'
 alias gre='git restore'
 alias vi='nvim'
 alias vanish='git branch | grep -v "master" | grep -v "develop" | xargs git branch -D'
-alias xclean='rm -rf ~/Library/Developer/Xcode/DerivedData'
 alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
+export EDITOR=/usr/local/bin/nvim
 
+# emacs mode
+bindkey -e
 
-fpath=(/usr/local/share/zsh-completions $fpath)
-alias g='git'
-alias ga='git add'
-alias gd='git diff'
-alias gs='git status'
-alias gpl='git pull'
-alias gps='git push'
-alias gb='git branch'
-alias gst='git status'
-alias gco='git checkout'
-alias gf='git fetch'
-alias gfp='git fetch --prune'
-alias gc='git commit'
-alias gcm='git commit -m'
-export EDITOR=/usr/bin/vim
-
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
-
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
-
-### End of Zinit's installer chunk
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # 色を使用出来るようにする
 autoload -Uz colors
 colors

@@ -20,6 +20,10 @@
 !/.config/gh/config.yml
 !/.config/iterm2/
 !/.config/iterm2/AppSupport
+!/.config/lazygit
+!/.config/lazygit/**
+!/.config/neofetch
+!/.config/neofetch/**
 !/.config/nvim/
 !/.config/nvim/coc-settings.json
 !/.config/nvim/dein.toml
@@ -39,6 +43,8 @@
 !/.vim/
 !/.vim/**
 !/.xvimrc
+!/.zsh
+!/.zsh/**
 !/.zshrc
 !/.zshenv
 !/.zprofile

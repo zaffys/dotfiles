@@ -1,0 +1,22 @@
+add_newline = true
+
+[username]
+style_user = "yellow bold"
+style_root = "white bold"
+format = "[$user]($style) "
+disabled = false
+show_always = true
+
+[directory]
+truncation_length = 100
+truncate_to_repo = false
+
+[character]
+format = "[⚡️](bold yellow)"
+
+[git_branch]
+symbol = "🌱 "
+style = "bold green"
+
+[aws]
+disabled = true
