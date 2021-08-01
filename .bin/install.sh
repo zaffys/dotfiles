@@ -1,37 +1,80 @@
 #!/usr/bin/env bash
 set -ue
 
+source $(dirname "${BASH_SOURCE[0]:-$0}")/utilfuncs.sh
+
 #--------------------------------------------------------------#
 ##          Functions                                         ##
 #--------------------------------------------------------------#
 
-helpmsg() {
-  command echo "Usage: $0 [--help | -h]" 0>&2
-  command echo ""
+function link_to_homedir() {
+  print_notice "backup old dotfiles..."
+  local tmp_date
+  tmp_date=$(date '+%y%m%d-%H%M%S')
+  local backupdir="${XDG_CACHE_HOME:-$HOME/.cache}/dotbackup/$tmp_date"
+  mkdir_not_exist "$backupdir"
+  print_info "create backup directory: $backupdir\n"
+
+  print_info "Creating symlinks"
+  local current_dir
+  current_dir=$(dirname "${BASH_SOURCE[0]:-$0}")
+  local dotfiles_dir
+  dotfiles_dir="$(builtin cd "$current_dir" && git rev-parse --show-toplevel)"
+  if [[ "$HOME" != "$dotfiles_dir" ]]; then
+    for f in "$dotfiles_dir"/.??*; do
+      local f_filename
+      f_filename=$(basename "$f")
+      [[ "$f_filename" == ".git" || \
+      "$f_filename" == ".github" || \
+      "$f_filename" == ".DS_Store" ]] && continue
+      backup_and_link "$f" "$HOME" "$backupdir"
+    done
+  fi
 }
 
-link_to_homedir() {
-  command echo "backup old dotfiles..."
-  if [ ! -d "$HOME/.dotfiles_backup" ];then
-    command echo "$HOME/.dotfiles_backup not found. Auto Make it"
-    command mkdir "$HOME/.dotfiles_backup"
+function backup_and_link() {
+  local link_src_file=$1
+  local link_dest_dir=$2
+  local backupdir=$3
+  local f_filename
+  f_filename=$(basename "$link_src_file")
+  local f_filepath="$link_dest_dir/$f_filename"
+  if [[ -L "$f_filepath" ]]; then
+    command rm -f "$f_filepath"
   fi
 
-  local script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
-  local dotdir=$(dirname ${script_dir})
-  if [[ "$HOME" != "$dotdir" ]];then
-    for f in $dotdir/.??*; do
-      [[ `basename $f` == ".git" || `basename $f` == ".DS_Store" ]] && continue
-      if [[ ! -e "$HOME/.dotfiles_backup/`basename $f`" && -e "$HOME/`basename $f`" ]];then
-        command mv "$HOME/`basename $f`" "$HOME/.dotfiles_backup"
-      elif [[ -e "$HOME/`basename $f`" ]];then
-        command rm -rf "$HOME/`basename $f`"
-      fi
-      command ln -snf $f $HOME
-    done
-  else
-    command echo "same install src dest"
+  if install_by_local_installer "$link_src_file" "$backupdir"; then
+    return
   fi
+
+  if [[ -e "$f_filepath" && ! -L "$f_filepath" ]]; then
+    command mv "$f_filepath" "$backupdir"
+  fi
+  print_default "Creating symlink for $link_src_file -> $link_dest_dir"
+  command ln -snf "$link_src_file" "$link_dest_dir"
+}
+
+function install_by_local_installer() {
+  local link_src_file=$1
+  local backupdir=$2
+
+  local file_list
+  file_list=$(command find "$link_src_file" -name "_install.sh" -type f 2>/dev/null)
+  if [[ -n "$file_list" ]]; then
+    if [[ -e "$f_filepath" ]]; then
+      command cp -r "$f_filepath" "$backupdir"
+    fi
+    for f in $file_list; do
+      eval "$f"
+    done
+    return 0
+  fi
+  return 1
+}
+
+function helpmsg() {
+  command printf "Usage: $0 [--help | -h]" 0>&2
+  command printf ""
 }
 
 #--------------------------------------------------------------#
@@ -60,10 +103,10 @@ done
 
 if [[ "$IS_INSTALL" = true ]];then
   link_to_homedir
-  command echo ""
-  command echo "#####################################################"
-  command echo -e "$(basename $0) install success!!!"
-  command echo "#####################################################"
-  command echo ""
+    print_info ""
+    print_info "#####################################################"
+    print_info "$(basename "${BASH_SOURCE[0]:-$0}") update finish!!!"
+    print_info "#####################################################"
+    print_info ""
 fi
 
