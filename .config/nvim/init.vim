@@ -190,6 +190,8 @@ nnoremap <Leader>e :e<CR>
 inoremap <silent> jj <ESC>:<C-u>w<CR>
 " grep検索の実行後にQuickFix Listを表示する
 autocmd QuickFixCmdPost *grep* cwindow
+" trail whitespace
+autocmd BufWritePre * :%s/\s\+$//e 
 
 let g:python_host_prog = "/Users/reona5/.pyenv/versions/py2neovim/bin/python"
 let g:python3_host_prog = "/Users/reona5/.pyenv/versions/py3neovim/bin/python"
