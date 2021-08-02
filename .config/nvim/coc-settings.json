@@ -1,6 +1,9 @@
 {
   "coc.preferences.formatOnSaveFiletypes": ["css", "json", "markdown"],
   "coc.preferences.formatOnType": true,
+  "diagnostic.errorSign": " ",
+  "diagnostic.warningSign": " ",
+  "diagnostic.infoSign": " ",
   "eslint.autoFixOnSave": true,
   "explorer.file.showHiddenFiles": true,
   "explorer.file.reveal.auto": false,

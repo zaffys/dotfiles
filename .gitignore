@@ -25,10 +25,8 @@
 !/.config/neofetch
 !/.config/neofetch/**
 !/.config/nvim/
-!/.config/nvim/coc-settings.json
-!/.config/nvim/dein.toml
-!/.config/nvim/dein_lazy.toml
-!/.config/nvim/init.vim
+!/.config/nvim/**
+!/.config/nvim/plugins/**
 !/.fzf.zsh
 !/.gitconfig
 !/.github/
