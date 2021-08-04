@@ -5,7 +5,6 @@ Plug 'tpope/vim-rhubarb'
 Plug 'cohama/lexima.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'Yggdroot/indentLine'
-Plug 'ervandew/supertab'
 Plug 'vim-test/vim-test'
 Plug 'tpope/vim-dispatch'
 
