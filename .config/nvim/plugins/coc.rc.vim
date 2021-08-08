@@ -1,15 +1,16 @@
 let g:coc_global_extensions = [
       \ 'coc-diagnostic'
-      \, 'coc-tsserver'
-      \, 'coc-solargraph'
-      \, 'coc-vetur'
-      \, 'coc-explorer'
-      \, 'coc-markdownlint'
       \, 'coc-eslint'
+      \, 'coc-explorer'
+      \, 'coc-go'
       \, 'coc-json'
-      \, 'coc-yaml'
+      \, 'coc-markdownlint'
       \, 'coc-prettier'
+      \, 'coc-solargraph'
       \, 'coc-spell-checker'
+      \, 'coc-tsserver'
+      \, 'coc-vetur'
+      \, 'coc-yaml'
       \]
 
 " Some servers have issues with backup files, see #649.
