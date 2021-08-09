@@ -12,11 +12,11 @@ set termguicolors
 set autowriteall
 autocmd CursorHold *  wall
 autocmd CursorHoldI *  wall
-set belloff=all
 set ttimeoutlen=10
+set belloff=all
+set shell=zsh
 set noswapfile
 set noundofile
-set ruler
 set cmdheight=2
 set title
 set wildmenu
@@ -31,6 +31,8 @@ set expandtab
 set incsearch
 set hidden
 set list
+set laststatus=2
+set cursorline
 set listchars=tab:>-,trail:·,extends:>,precedes:<,nbsp:%
 set number
 set norelativenumber
@@ -41,7 +43,7 @@ set tabstop=2
 set shiftwidth=2
 set smarttab
 set whichwrap=b,s,h,l,<,>,[,]
-syntax on
+syntax enable
 highlight LineNr ctermfg=darkyellow
 set formatoptions=q
 set formatoptions=q

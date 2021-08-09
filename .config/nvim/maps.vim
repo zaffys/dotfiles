@@ -12,6 +12,15 @@ autocmd BufWritePre * :%s/\s\+$//e
 inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
 
+nnoremap , <Nop>
+nnoremap ,j <C-w>j
+nnoremap ,k <C-w>k
+nnoremap ,l <C-w>l
+nnoremap ,h <C-w>h
+nnoremap ,= <C-w>=
+nnoremap ,s :<C-u>sp<CR>
+nnoremap ,v :<C-u>vs<CR>
+
 """"""""""""""""""""""""""""""
 " emacs keybind              "
 """"""""""""""""""""""""""""""

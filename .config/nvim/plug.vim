@@ -11,7 +11,6 @@ Plug 'tpope/vim-dispatch'
 if has("nvim")
   Plug 'shaunsingh/nord.nvim'
   Plug 'hoob3rt/lualine.nvim'
-  Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'kyazdani42/nvim-web-devicons'

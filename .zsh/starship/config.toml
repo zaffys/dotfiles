@@ -1,5 +1,3 @@
-add_newline = true
-
 [username]
 style_user = "yellow bold"
 style_root = "white bold"
@@ -20,3 +18,8 @@ style = "bold green"
 
 [aws]
 disabled = true
+
+[time]
+disabled = false
+format = '[🕙$time]($style) '
+time_format = "%T"
