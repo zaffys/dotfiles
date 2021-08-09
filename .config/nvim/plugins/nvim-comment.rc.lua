@@ -7,7 +7,7 @@ require'nvim_comment'.setup {
     -- Should key mappings be created
     create_mappings = true,
     -- Normal mode mapping left hand side
-    line_mapping = "gcc",
+    line_mapping = "gc",
     -- Visual/Operator mapping left hand side
     operator_mapping = "gc",
     -- Hook function to call before commenting takes place

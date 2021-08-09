@@ -3,7 +3,6 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'cohama/lexima.vim'
-Plug 'machakann/vim-sandwich'
 Plug 'Yggdroot/indentLine'
 Plug 'vim-test/vim-test'
 Plug 'tpope/vim-dispatch'
