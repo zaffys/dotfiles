@@ -10,8 +10,8 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 
 set autowriteall
-autocmd CursorHold *  wall
-autocmd CursorHoldI *  wall
+autocmd CursorHold * wall
+autocmd CursorHoldI * wall
 set shell=zsh
 set belloff=all
 set noswapfile
