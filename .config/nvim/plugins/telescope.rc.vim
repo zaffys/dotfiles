@@ -12,8 +12,12 @@ require'telescope'.setup{
     mappings = {
       n = {
         ["q"] = actions.close
-      },
+      }
     },
+    file_ignore_patterns = {
+      'node_modules',
+      'vendor'
+    }
   }
 }
 EOF
