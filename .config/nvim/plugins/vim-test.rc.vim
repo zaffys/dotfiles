@@ -11,7 +11,7 @@ endfunction
 
 let g:test#custom_transformations = {'docker': function('DockerTransformer')}
 let g:test#transformation = 'docker'
-let g:test#strategy = 'dispatch'
+let g:test#strategy = 'vimux'
 
 nnoremap <Leader>tn :TestNearest<cr>
 nnoremap <Leader>tf :TestFile<cr>

@@ -5,6 +5,7 @@ let g:coc_global_extensions = [
       \, 'coc-go'
       \, 'coc-json'
       \, 'coc-markdownlint'
+      \, 'coc-pairs'
       \, 'coc-prettier'
       \, 'coc-solargraph'
       \, 'coc-spell-checker'

@@ -9,9 +9,6 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 
-set autowriteall
-autocmd CursorHold * wall
-autocmd CursorHoldI * wall
 set shell=zsh
 set belloff=all
 set noswapfile
@@ -44,7 +41,7 @@ set whichwrap=h,l,<,>,[,]
 syntax enable
 set formatoptions=q
 set synmaxcol=200
-set clipboard+=unnamed
+set clipboard=unnamed
 set encoding=utf-8
 scriptencoding=uft-8
 set fileencoding=utf-8
@@ -53,6 +50,15 @@ set autoread
 set regexpengine=1
 set scrolloff=5
 set backspace=2
+set autowrite
+set updatetime=500
+function s:AutoWriteIfPossible()
+  if &modified && !&readonly && bufname('%') !=# '' && &buftype ==# '' && expand("%") !=# ''
+    write
+  endif
+endfunction
+autocmd CursorHold * call s:AutoWriteIfPossible()
+autocmd CursorHoldI * call s:AutoWriteIfPossible()
 
 """"""""""""""""""""""""""""""
 " Full-width Space highlight
