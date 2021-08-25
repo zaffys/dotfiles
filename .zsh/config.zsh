@@ -43,18 +43,10 @@ setopt hist_reduce_blanks
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-## fbr - checkout git branch
-fbr() {
+# ghbr - checkout git branch (including remote branches)
+ghbr() {
   local branches branch
-  branches=$(git branch -vv) &&
-  branch=$(echo "$branches" | fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
-}
-
-# fbrm - checkout git branch (including remote branches)
-fbrm() {
-  local branches branch
-  branches=$(git branch --all | grep -v HEAD) &&
+  branches=$(git branch --all | rg -v HEAD) &&
   branch=$(echo "$branches" |
            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
