@@ -1,8 +1,4 @@
-anyenv() {
-  unfunction "$0"
-  source <(anyenv init -)
-  $0 "$@"
-}
+source <(anyenv init -)
 
 nodenv() {
   unfunction "$0"

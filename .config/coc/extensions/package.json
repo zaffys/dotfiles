@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@yaegassy/coc-volar": ">=0.5.12",
     "coc-diagnostic": ">=0.21.2",
     "coc-eslint": ">=1.4.5",
     "coc-explorer": ">=0.18.15",

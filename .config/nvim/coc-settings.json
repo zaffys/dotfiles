@@ -12,6 +12,5 @@
   "explorer.quitOnOpen": true,
   "prettier.disableSuccessMessage": true,
   "suggest.enablePreselect": true,
-  "solargraph.diagnostics": true,
-  "tsserver.enableJavascript": false
+  "solargraph.diagnostics": true
 }
