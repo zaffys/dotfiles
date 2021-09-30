@@ -43,8 +43,8 @@ setopt hist_reduce_blanks
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# ghbr - checkout git branch (including remote branches)
-ghbr() {
+# fbrm - checkout git branch (including remote branches)
+fbrm() {
   local branches branch
   branches=$(git branch --all | rg -v HEAD) &&
   branch=$(echo "$branches" |
