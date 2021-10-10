@@ -12,6 +12,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
 
+""""""""""""""""""""""""""""""
+" Manage window              "
+""""""""""""""""""""""""""""""
 nnoremap , <Nop>
 nnoremap ,j <C-w>j
 nnoremap ,k <C-w>k
@@ -24,7 +27,6 @@ nnoremap ,v :<C-u>vs<CR>
 """"""""""""""""""""""""""""""
 " emacs keybind              "
 """"""""""""""""""""""""""""""
-" insert mode
 imap <C-p> <Up>
 imap <C-n> <Down>
 imap <C-b> <Left>
@@ -60,17 +62,3 @@ function! s:split_line()
   let text_before = (col('.') > 1) ? line_text[: col('.')-2] : ''
   return [text_before, text_after]
 endfunction
-
-""""""""""""""""""""""""""""""
-" jq
-""""""""""""""""""""""""""""""
-command! -nargs=? Jq call s:Jq(<f-args>)
-function! s:Jq(...)
-  if 0 == a:0
-    let l:arg = "."
-  else
-    let l:arg = a:1
-  endif
-  execute "%! jq \"" . l:arg . "\""
-endfunction
-""""""""""""""""""""""""""""""
