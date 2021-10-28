@@ -15,7 +15,7 @@ if has("nvim")
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'terrortylor/nvim-comment'
   Plug 'romgrk/barbar.nvim'
-  Plug 'iamcco/markdown-preview.nvim'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
