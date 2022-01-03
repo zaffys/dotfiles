@@ -1,5 +1,11 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["json", "markdown"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "markdown"
+  ],
   "coc.preferences.formatOnType": true,
   "diagnostic.errorSign": " ",
   "diagnostic.warningSign": " ",

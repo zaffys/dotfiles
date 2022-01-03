@@ -4,7 +4,7 @@ alias -g @l='| less'
 alias -g @f='--force-with-lease'
 
 alias ssh='TERM=xterm-256color ssh'
-alias ls='exa -ahHl'
+alias exa='exa -ahHl'
 alias dc='docker-compose'
 alias da='docker attach'
 alias gst='git status'

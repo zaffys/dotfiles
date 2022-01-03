@@ -47,7 +47,6 @@ scriptencoding=uft-8
 set fileencoding=utf-8
 set fileformats=unix,dos,mac
 set autoread
-set regexpengine=1
 set scrolloff=5
 set backspace=2
 set autowrite
