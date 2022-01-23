@@ -24,4 +24,4 @@
 [init]
 	defaultBranch = main
 [ghq]
-	root = /Users/reona5/src
+	root = ~/src

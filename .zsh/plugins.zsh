@@ -18,6 +18,7 @@ zinit light-mode for \
     zdharma-continuum/z-a-as-monitor \
     zdharma-continuum/z-a-patch-dl \
     zdharma-continuum/z-a-bin-gem-node
+### End of Zinit's installer chunk
 
 zinit ice from"gh-r" as"program" atload'!eval $(starship init zsh)'
 zinit light starship/starship

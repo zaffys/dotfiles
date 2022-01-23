@@ -3,5 +3,6 @@ export HOMEBREWPATH=/opt/homebrew/bin:$PATH
 export GOPATH="$HOME/go"
 export GOBINPATH="$PATH:$GOPATH/bin"
 export STARSHIP_CONFIG="$HOME/.zsh/starship/config.toml"
+export TERM=screen-256color
 
 . /usr/local/opt/asdf/libexec/asdf.sh

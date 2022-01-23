@@ -5,9 +5,8 @@ let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_json_conceal = 0
 
 " Enable true color
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
+colorscheme nord
 
 set shell=zsh
 set belloff=all

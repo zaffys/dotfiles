@@ -3,7 +3,6 @@
 runtime ./plug.vim
 runtime ./config.vim
 runtime ./maps.vim
-colorscheme nord
 
 if exists('g:vscode')
     " VSCode extension

@@ -9,9 +9,6 @@ show_always = true
 truncation_length = 100
 truncate_to_repo = false
 
-[character]
-format = "[⚡️](bold yellow)"
-
 [git_branch]
 symbol = "🌱 "
 style = "bold green"
