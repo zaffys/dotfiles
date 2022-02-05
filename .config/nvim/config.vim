@@ -5,7 +5,11 @@ let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_json_conceal = 0
 
 " Enable true color
-set termguicolors
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 colorscheme nord
 
 set shell=zsh
@@ -50,6 +54,8 @@ set scrolloff=5
 set backspace=2
 set autowrite
 set updatetime=500
+set spell
+set spelllang=en,cjk
 function s:AutoWriteIfPossible()
   if &modified && !&readonly && bufname('%') !=# '' && &buftype ==# '' && expand("%") !=# ''
     write
