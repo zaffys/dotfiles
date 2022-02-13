@@ -27,6 +27,8 @@
 !/.config/nvim/
 !/.config/nvim/**
 !/.config/nvim/plugins/**
+!/.config/wezterm/
+!/.config/wezterm/wezterm.lua
 !/.fzf.zsh
 !/.gitconfig
 !/.github/

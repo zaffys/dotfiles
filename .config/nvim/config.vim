@@ -10,7 +10,7 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-colorscheme nord
+colorscheme kanagawa
 
 set shell=zsh
 set belloff=all
@@ -54,8 +54,6 @@ set scrolloff=5
 set backspace=2
 set autowrite
 set updatetime=500
-set spell
-set spelllang=en,cjk
 function s:AutoWriteIfPossible()
   if &modified && !&readonly && bufname('%') !=# '' && &buftype ==# '' && expand("%") !=# ''
     write

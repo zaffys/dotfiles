@@ -1,9 +1,9 @@
 function! DockerTransformer(cmd) abort
-  let container_name = system("docker-compose ps | grep 3000 | awk '{print $1}'")
-  if matchstr(container_name, "_app_") == "_app_"
-    return 'docker-compose exec app ' . a:cmd
-  elseif matchstr(container_name, "_web_") == "_web_"
-    return 'docker-compose exec web ' . a:cmd
+  let container_name = system("docker compose ps | grep 3000 | awk '{print $1}'")
+  if matchstr(container_name, "app") == "app"
+    return 'docker compose exec app ' . a:cmd
+  elseif matchstr(container_name, "web") == "web"
+    return 'docker compose exec web ' . a:cmd
   else
     return a:cmd
   endif
