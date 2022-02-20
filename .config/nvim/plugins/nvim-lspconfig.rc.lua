@@ -61,7 +61,7 @@ end
 -- diagnosticls
 require('lspconfig').diagnosticls.setup {
   on_attach = on_attach,
-  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'vue' },
+  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'ruby', 'css', 'less', 'scss', 'markdown', 'vue' },
   init_options = {
     linters = {
       eslint = {
@@ -84,12 +84,30 @@ require('lspconfig').diagnosticls.setup {
           [1] = 'warning'
         }
       },
+      rubocop = {
+        command = 'bundle',
+        args = { "exec", "rubocop", "--format", "json", "--force-exclusion", "%filepath" },
+        debounce = 100,
+        sourceName = 'rubocop',
+        parseJson = {
+          errorsRoot = "files[0].offenses",
+          line = "location.line",
+          column = "location.column",
+          message = "[${cop_name}] ${message}",
+          security = "severity"
+        },
+        securities = {
+          fatal = 'error',
+          warning = 'warning'
+        }
+      }
     },
     filetypes = {
       javascript = 'eslint',
       javascriptreact = 'eslint',
       typescript = 'eslint',
       typescriptreact = 'eslint',
+      ruby = 'rubocop'
     },
     formatters = {
       eslint_d = {
@@ -100,6 +118,10 @@ require('lspconfig').diagnosticls.setup {
       prettier = {
         command = 'prettier',
         args = { '--stdin-filepath', '%filename' }
+      },
+      rubocop = {
+        command = 'bundle',
+        args = { 'exec', 'rubocop', '-a', '%filepath' }
       }
     },
     formatFiletypes = {
@@ -111,6 +133,7 @@ require('lspconfig').diagnosticls.setup {
       less = 'prettier',
       typescript = 'eslint_d',
       typescriptreact = 'eslint_d',
+      ruby = 'rubocop',
       vue = 'eslint_d',
       markdown = 'prettier',
     }
@@ -152,4 +175,3 @@ require('lspconfig').sumneko_lua.setup {
     },
   },
 }
-
