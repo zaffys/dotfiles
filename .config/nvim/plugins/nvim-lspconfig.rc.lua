@@ -121,7 +121,7 @@ require('lspconfig').diagnosticls.setup {
       },
       rubocop = {
         command = 'bundle',
-        args = { 'exec', 'rubocop', '-a', '%filepath' }
+        args = { 'exec', 'rubocop', '-a', '--stderr', '--stdin', '%filepath' }
       }
     },
     formatFiletypes = {
@@ -174,4 +174,20 @@ require('lspconfig').sumneko_lua.setup {
       },
     },
   },
+}
+
+-- solargraph
+require'lspconfig'.solargraph.setup{
+  on_attach = on_attach,
+  cmd = { "solargraph", "stdio" },
+  filetypes = { "ruby" },
+  init_options = {
+    formatting = false
+  },
+  root_dir = require'lspconfig.util'.root_pattern("Gemfile", ".git"),
+  settings = {
+    solargraph = {
+      diagnostics = false
+    }
+  }
 }
