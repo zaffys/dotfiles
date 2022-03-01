@@ -12,6 +12,8 @@ endfunction
 let g:test#custom_transformations = {'docker': function('DockerTransformer')}
 let g:test#transformation = 'docker'
 let g:test#strategy = 'vimux'
+let g:test#javascript#runner = 'jest'
+let test#javascript#jest#executable = 'yarn test'
 
 nnoremap <Leader>tn :TestNearest<cr>
 nnoremap <Leader>tf :TestFile<cr>
