@@ -30,7 +30,6 @@ set expandtab
 set incsearch
 set hidden
 set list
-set laststatus=2
 set cursorline
 set listchars=tab:>-,trail:·,extends:>,precedes:<,nbsp:%
 set number
