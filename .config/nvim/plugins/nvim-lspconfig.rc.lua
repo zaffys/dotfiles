@@ -37,7 +37,7 @@ end
 
 -- nvim-lsp-installer
 local lsp_installer_servers = require('nvim-lsp-installer.servers')
-local servers = { 'emmet_ls', 'solargraph', 'spectral', 'sumneko_lua', 'vuels', 'dockerls', 'eslint', 'tsserver', 'diagnosticls' }
+local servers = { 'emmet_ls', 'solargraph', 'spectral', 'sumneko_lua', 'vuels', 'dockerls', 'eslint', 'tsserver', 'diagnosticls', 'gopls', 'golangci_lint_ls' }
 for _, server_name in pairs(servers) do
   local server_available, server = lsp_installer_servers.get_server(server_name)
   if server_available then
