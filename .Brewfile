@@ -1,4 +1,5 @@
 cask_args appdir: "/Applications"
+
 tap "arkweid/lefthook"
 tap "eugenmayer/dockersync"
 tap "github/gh"
@@ -16,7 +17,7 @@ tap "qmk/qmk"
 tap "sanemat/font"
 tap "universal-ctags/universal-ctags"
 tap "yutomizutani/jc"
-brew "anyenv"
+
 brew "imath"
 brew "autoconf"
 brew "libtool"
@@ -57,16 +58,10 @@ brew "tree-sitter"
 brew "neovim"
 brew "nghttp2"
 brew "ninja"
-brew "node"
-brew "node-build"
 brew "pngpaste"
 brew "postgresql", restart_service: true
-brew "pyenv"
-brew "ruby-build"
-brew "rbenv"
 brew "reattach-to-user-namespace"
 brew "ripgrep"
-brew "ruby"
 brew "tig"
 brew "tmux"
 brew "tree"
@@ -78,6 +73,7 @@ brew "zsh"
 brew "zsh-completions"
 brew "sanemat/font/ricty"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
+
 cask "alfred"
 cask "chromedriver"
 cask "dash"
@@ -95,4 +91,6 @@ cask "skitch"
 cask "slack"
 cask "visual-studio-code"
 cask "zoom"
-mas install 539883307 # LINE
+
+mas 'Kindle', id: 405399194
+mas 'LINE', id: 539883307
