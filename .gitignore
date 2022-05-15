@@ -49,7 +49,9 @@
 !/.zshenv
 !/.zprofile
 
+!/.Brewfile
 !/README.md
 !/LICENSE
+!/Makefile
 !.gitignore
 !.gitkeep
