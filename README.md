@@ -1,3 +1,5 @@
+![action](https://github.com/reona5/dotfiles/actions/workflows/main.yml/badge.svg)
+
 # dotfiles
 
 The dotfiles updated from time to time.
