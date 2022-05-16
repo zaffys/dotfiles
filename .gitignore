@@ -33,7 +33,9 @@
 !/.gitconfig
 !/.github/
 !/.github/**
+!/.gitignore
 !/.gitignore_global
+!/.gitkeep
 !/.tmux.conf
 !/.tmux/
 !/.tmux/plugins/
@@ -50,8 +52,8 @@
 !/.zprofile
 
 !/.Brewfile
-!/README.md
+!/.Masfile
+
 !/LICENSE
 !/Makefile
-!.gitignore
-!.gitkeep
+!/README.md

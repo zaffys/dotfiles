@@ -1,8 +1,7 @@
 #!/bin/bash
 
-if [ "$(uname)" != "Darwin" ] ; then
-	echo "Not macOS!"
-	exit 1
-fi
+# install packages in Brewfile
+brew bundle install --global --verbose --no-lock
 
-brew bundle -v --global --file=../.Brewfile
+# NOTE: https://github.com/Homebrew/homebrew-bundle/issues/1062
+brew link --overwrite git

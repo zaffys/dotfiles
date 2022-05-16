@@ -16,3 +16,6 @@ defaults:
 # Install macOS applications.
 brew:
 	.bin/brew.sh
+
+mas:
+	.bin/mas.sh

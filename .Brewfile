@@ -39,7 +39,7 @@ brew "fzf"
 brew "gdk-pixbuf"
 brew "gh"
 brew "ghq"
-brew "git"
+brew "git", link: true, conflicts_with: ["git"]
 brew "gnupg"
 brew "gobject-introspection"
 brew "harfbuzz"
@@ -76,7 +76,6 @@ brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 
 cask "alfred"
 cask "chromedriver"
-cask "dash"
 cask "deepl"
 cask "docker"
 cask "firefox"
@@ -91,6 +90,3 @@ cask "skitch"
 cask "slack"
 cask "visual-studio-code"
 cask "zoom"
-
-mas 'Kindle', id: 405399194
-mas 'LINE', id: 539883307
