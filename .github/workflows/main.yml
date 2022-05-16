@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Dotfiles CI
+name: install
 
 # Controls when the action will run.
 on:
@@ -20,6 +20,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
+      # make commands without mas 
       - name: Set MacOS.
-        run: make
+        run: | 
+          make init
+          make link
+          make defaults
+          make brew
