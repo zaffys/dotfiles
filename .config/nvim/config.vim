@@ -61,6 +61,9 @@ endfunction
 autocmd CursorHold * call s:AutoWriteIfPossible()
 autocmd CursorHoldI * call s:AutoWriteIfPossible()
 
+" settings for golang
+au FileType go setlocal sw=4 ts=4 sts=4 noet
+
 """"""""""""""""""""""""""""""
 " Full-width Space highlight
 """"""""""""""""""""""""""""""

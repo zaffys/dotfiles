@@ -1,11 +1,8 @@
 -- nvim-lspconfig
-local on_attach = function(client, bufnr)
-  -- if client.resolved_capabilities.document_formatting then
-  --   vim.api.nvim_command [[augroup Format]]
-  --   vim.api.nvim_command [[autocmd! * <buffer>]]
-  --   vim.api.nvim_command [[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]]
-  --   vim.api.nvim_command [[augroup END]]
-  -- end
+local on_attach = function(_, bufnr)
+  vim.api.nvim_command [[autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)]]
+  vim.api.nvim_command [[autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 1000)]]
+  vim.api.nvim_command [[autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)]]
 
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
