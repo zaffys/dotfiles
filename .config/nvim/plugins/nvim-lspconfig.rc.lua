@@ -1,3 +1,16 @@
+-- nvim-lsp-installer
+require("nvim-lsp-installer").setup {}
+local lspconfig = require('lspconfig')
+
+-- nvim-cmp
+require'cmp'.setup {
+  sources = {
+    { name = 'nvim_lsp' }
+  }
+}
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
 -- nvim-lspconfig
 local on_attach = function(_, bufnr)
   -- Enable to insert imported library for golang
@@ -49,32 +62,10 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", opts)
 end
 
--- nvim-lsp-installer
-local lsp_installer_servers = require('nvim-lsp-installer.servers')
-local servers = { 'emmet_ls', 'solargraph', 'spectral', 'sumneko_lua', 'vuels', 'dockerls', 'eslint', 'tsserver', 'diagnosticls', 'gopls', 'golangci_lint_ls' }
-for _, server_name in pairs(servers) do
-  local server_available, server = lsp_installer_servers.get_server(server_name)
-  if server_available then
-    server:on_ready(function ()
-      -- When this particular server is ready (i.e. when installation is finished or the server is already installed),
-      -- this function will be invoked. Make sure not to use the "catch-all" lsp_installer.on_server_ready()
-      -- function to set up servers, to avoid doing setting up a server twice.
-      local opts = {}
-      opts.on_attach = on_attach
-      opts.capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-      server:setup(opts)
-    end)
-    if not server:is_installed() then
-      -- Queue the server to be installed
-      server:install()
-    end
-  end
-end
-
 -- diagnosticls
-require('lspconfig').diagnosticls.setup {
+lspconfig.diagnosticls.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'ruby', 'css', 'less', 'scss', 'markdown', 'vue' },
   init_options = {
     linters = {
@@ -169,8 +160,9 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-require('lspconfig').sumneko_lua.setup {
+lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
@@ -191,8 +183,9 @@ require('lspconfig').sumneko_lua.setup {
 }
 
 -- solargraph
-require'lspconfig'.solargraph.setup{
+require'lspconfig'.solargraph.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   cmd = { "solargraph", "stdio" },
   filetypes = { "ruby" },
   init_options = {
@@ -208,6 +201,8 @@ require'lspconfig'.solargraph.setup{
 
 -- gopls
 require'lspconfig'.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
   cmd = {"gopls", "serve"},
   filetypes = {"go", "gomod"},
   root_dir = require'lspconfig.util'.root_pattern("go.work", "go.mod", ".git"),
