@@ -215,3 +215,9 @@ require'lspconfig'.gopls.setup {
     },
   },
 }
+
+-- tsserver
+lspconfig.tsserver.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
