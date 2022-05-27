@@ -183,7 +183,7 @@ lspconfig.sumneko_lua.setup {
 }
 
 -- solargraph
-require'lspconfig'.solargraph.setup {
+lspconfig.solargraph.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = { "solargraph", "stdio" },
@@ -200,7 +200,7 @@ require'lspconfig'.solargraph.setup {
 }
 
 -- gopls
-require'lspconfig'.gopls.setup {
+lspconfig.gopls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {"gopls", "serve"},
@@ -218,6 +218,12 @@ require'lspconfig'.gopls.setup {
 
 -- tsserver
 lspconfig.tsserver.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+-- vuels
+lspconfig.vuels.setup{
   on_attach = on_attach,
   capabilities = capabilities,
 }
