@@ -2,16 +2,16 @@
 # Defines environment variables.
 #
 
-# Ensure that a non-login, non-interactive shell has a defined environment.
-if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprofile"
-fi
-
-if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
-  source "${VIRTUAL_ENV}/bin/activate"
-fi
-. "$HOME/.cargo/env"
-
+export LANG=en_US.UTF-8
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
+export HOMEBREWPATH=/opt/homebrew/bin
+export GOBIN=$HOME/go/bin
+export LUAPATH=$HOME/.local/share/nvim/lsp_servers/sumneko_lua
+export STARSHIP_CONFIG=$HOME/.zsh/starship/config.toml
+export TERM=screen-256color
+export LG_CONFIG_FILE=~/.config/lazygit/config.yml
+export PATH="$(yarn global bin):$PATH:$GOBIN:$HOMEBREWPATH:$LG_CONFIG_FILE:$LUAPATH"
+
+. /usr/local/opt/asdf/libexec/asdf.sh
