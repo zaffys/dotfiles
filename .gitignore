@@ -30,7 +30,6 @@
 !/.config/wezterm/
 !/.config/wezterm/wezterm.lua
 !/.fzf.zsh
-!/.gitconfig
 !/.github/
 !/.github/**
 !/.gitignore

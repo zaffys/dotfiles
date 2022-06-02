@@ -48,7 +48,8 @@ require'telescope'.setup{
     },
     file_ignore_patterns = {
       'node_modules',
-      'channel.html'
+      'channel.html',
+      'tags'
     },
     buffer_previewer_maker = new_maker,
   }

@@ -53,6 +53,7 @@ set scrolloff=5
 set backspace=2
 set autowrite
 set updatetime=500
+set tags=./tags;,tags;
 function s:AutoWriteIfPossible()
   if &modified && !&readonly && bufname('%') !=# '' && &buftype ==# '' && expand("%") !=# ''
     write
