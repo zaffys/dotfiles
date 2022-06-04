@@ -32,7 +32,6 @@ if has("nvim")
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'kdheepak/lazygit.nvim'
-  Plug 'weilbith/nvim-lsp-smag'
   Plug 'rebelot/kanagawa.nvim'
 end
 

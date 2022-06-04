@@ -11,6 +11,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Enable to use tab key for auto-completions
 inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
+" Go to definition for Ruby by ctags
+autocmd BufEnter *.rb nnoremap <buffer> g] g<C-]>
+autocmd BufEnter *.rb inoremap <buffer> g] <ESC>g<C-]>
 
 """"""""""""""""""""""""""""""
 " Manage window              "
