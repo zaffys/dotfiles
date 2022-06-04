@@ -15,7 +15,6 @@ tap "osx-cross/arm"
 tap "osx-cross/avr"
 tap "qmk/qmk"
 tap "sanemat/font"
-tap "universal-ctags/universal-ctags"
 tap "yutomizutani/jc"
 
 brew "imath"
@@ -72,7 +71,7 @@ brew "yarn"
 brew "zsh"
 brew "zsh-completions"
 brew "sanemat/font/ricty"
-brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
+brew "universal-ctags"
 
 cask "alfred"
 cask "chromedriver"

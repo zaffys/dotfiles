@@ -1,21 +1,22 @@
-# Do everything.
-all: init link defaults brew
+.PHONY: all
+all: init link defaults brew mas
 
-# Set initial preference.
+.PHONY: init
 init:
 	.bin/init.sh
 
-# Link dotfiles.
+.PHONY: link
 link:
 	.bin/link.sh
 
-# Set macOS system preferences.
+.PHONY: defaults
 defaults:
 	.bin/defaults.sh
 
-# Install macOS applications.
+.PHONY: brew
 brew:
 	.bin/brew.sh
 
+.PHONY: mas
 mas:
 	.bin/mas.sh
