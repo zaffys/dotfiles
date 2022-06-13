@@ -1,4 +1,4 @@
-nnoremap <silent> <leader>a :Gwrite<CR>
+nnoremap <silent> <leader>a :Git add %<CR>
 nnoremap <silent> <leader>c :Git commit<CR>
 nnoremap <silent> <leader>b :GBrowse<CR>
 nnoremap <silent> <leader>d :Git diff<CR>

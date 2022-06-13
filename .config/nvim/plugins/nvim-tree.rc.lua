@@ -90,7 +90,7 @@ require'nvim-tree'.setup {
         file = true,
         folder = true,
         folder_arrow = true,
-        git = true,
+        git = false,
       },
       glyphs = {
         default = "",
@@ -148,7 +148,7 @@ require'nvim-tree'.setup {
     exclude = {},
   },
   git = {
-    enable = true,
+    enable = false,
     ignore = false,
   },
   actions = {
