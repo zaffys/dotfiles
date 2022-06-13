@@ -1,4 +1,4 @@
-call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+call plug#begin()
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
@@ -22,7 +22,6 @@ if has("nvim")
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'kyazdani42/nvim-tree.lua'
-  Plug 'glepnir/dashboard-nvim'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'terrortylor/nvim-comment'
