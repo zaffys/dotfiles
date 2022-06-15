@@ -3,7 +3,7 @@ require("nvim-lsp-installer").setup {}
 local lspconfig = require('lspconfig')
 
 -- nvim-cmp
-require'cmp'.setup {
+require 'cmp'.setup {
   sources = {
     { name = 'nvim_lsp' }
   }
@@ -16,7 +16,7 @@ local on_attach = function(_, bufnr)
   -- Enable to insert imported library for golang
   function OrgImports(wait_ms)
     local params = vim.lsp.util.make_range_params()
-    params.context = {only = {"source.organizeImports"}}
+    params.context = { only = { "source.organizeImports" } }
     local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
     for _, res in pairs(result or {}) do
       for _, r in pairs(res.result or {}) do
@@ -29,15 +29,23 @@ local on_attach = function(_, bufnr)
     end
   end
 
-  vim.api.nvim_command [[autocmd BufWritePre *.go lua OrgImports(100)]]
-  vim.api.nvim_command [[autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)]]
-  vim.api.nvim_command [[autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 1000)]]
-  vim.api.nvim_command [[autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)]]
+  local lspconfig_group = vim.api.nvim_create_augroup('lspconfig', { clear = true })
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = '*.go, *.js, *.ts',
+    command = 'lua vim.lsp.buf.formatting_sync(nil, 1000)',
+    group = lspconfig_group
+  })
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = '*.go',
+    command = 'lua OrgImports(100)',
+    group = lspconfig_group
+  })
+
 
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  local opts = { noremap=true, silent=true }
+  local opts = { noremap = true, silent = true }
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-[>', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -54,7 +62,7 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", ",r", "<cmd>Lspsaga rename<cr>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", ",a", "<cmd>Lspsaga code_action<cr>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "x", ",x", ":<c-u>Lspsaga range_code_action<cr>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "K",  "<cmd>Lspsaga hover_doc<cr>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", ",e", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-j>", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
@@ -147,12 +155,12 @@ lspconfig.diagnosticls.setup {
 -- diagnostics-icon
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    virtual_text = {
-      spacing = 4,
-      prefix = ''
-    }
+  underline = true,
+  virtual_text = {
+    spacing = 4,
+    prefix = ''
   }
+}
 )
 
 -- lua-language-server
@@ -170,7 +178,7 @@ lspconfig.sumneko_lua.setup {
         path = runtime_path,
       },
       diagnostics = {
-        globals = {'vim'},
+        globals = { 'vim' },
       },
       workspace = {
         library = vim.api.nvim_get_runtime_file("", true),
@@ -191,7 +199,7 @@ lspconfig.solargraph.setup {
   init_options = {
     formatting = false
   },
-  root_dir = require'lspconfig.util'.root_pattern("Gemfile", ".git"),
+  root_dir = require 'lspconfig.util'.root_pattern("Gemfile", ".git"),
   settings = {
     solargraph = {
       diagnostics = false
@@ -203,9 +211,9 @@ lspconfig.solargraph.setup {
 lspconfig.gopls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = {"gopls", "serve"},
-  filetypes = {"go", "gomod"},
-  root_dir = require'lspconfig.util'.root_pattern("go.work", "go.mod", ".git"),
+  cmd = { "gopls", "serve" },
+  filetypes = { "go", "gomod" },
+  root_dir = require 'lspconfig.util'.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = {
       analyses = {
@@ -217,14 +225,14 @@ lspconfig.gopls.setup {
 }
 
 -- tsserver
-lspconfig.tsserver.setup{
+lspconfig.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
 }
 
 -- vuels
-lspconfig.vuels.setup{
+lspconfig.vuels.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }

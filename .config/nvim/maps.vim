@@ -6,14 +6,18 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>e :e<CR>
 " Change from insert mode to normal mode
 inoremap <silent> jj <ESC>:<C-u>w<CR>
-" trail whitespace
-autocmd BufWritePre * :%s/\s\+$//e
 " Enable to use tab key for auto-completions
 inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
-" Go to definition for Ruby by ctags
-autocmd BufEnter *.rb nnoremap <buffer> g] g<C-]>
-autocmd BufEnter *.rb inoremap <buffer> g] <ESC>g<C-]>
+
+augroup Maps
+  autocmd!
+  " Go to definition for Ruby by ctags
+  autocmd BufEnter *.rb nnoremap <buffer> g] g<C-]>
+  autocmd BufEnter *.rb inoremap <buffer> g] <ESC>g<C-]>
+  " trail whitespace
+  autocmd BufWritePre * :%s/\s\+$//e
+augroup END
 
 """"""""""""""""""""""""""""""
 " Manage window              "

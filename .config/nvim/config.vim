@@ -52,15 +52,18 @@ set autoread
 set scrolloff=5
 set backspace=2
 set autowrite
-set updatetime=500
+set updatetime=100
 set tags=./tags;,tags;
 function s:AutoWriteIfPossible()
   if &modified && !&readonly && bufname('%') !=# '' && &buftype ==# '' && expand("%") !=# ''
     write
   endif
 endfunction
-autocmd CursorHold * call s:AutoWriteIfPossible()
-autocmd CursorHoldI * call s:AutoWriteIfPossible()
+augroup AutoWrite
+  autocmd!
+  autocmd CursorHold * call s:AutoWriteIfPossible()
+  autocmd CursorHoldI * call s:AutoWriteIfPossible()
+augroup END
 
 " settings for golang
 au FileType go setlocal sw=4 ts=4 sts=4 noet
