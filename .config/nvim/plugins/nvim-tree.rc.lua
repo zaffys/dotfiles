@@ -1,5 +1,5 @@
 require'nvim-tree'.setup {
-  auto_reload_on_write = true,
+  auto_reload_on_write = false,
   create_in_closed_folder = false,
   disable_netrw = false,
   hijack_cursor = false,
