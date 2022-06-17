@@ -2,6 +2,7 @@ call plug#begin()
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'gotchane/vim-git-commit-prefix'
 Plug 'cohama/lexima.vim'
 Plug 'vim-test/vim-test'
 Plug 'preservim/vimux'
