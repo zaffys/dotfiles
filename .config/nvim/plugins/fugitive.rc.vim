@@ -4,8 +4,8 @@ nnoremap <silent> <leader>b :GBrowse<CR>
 nnoremap <silent> <leader>d :Git diff<CR>
 
 function! ToggleGStatus()
-    if buflisted(bufname('.git/index'))
-        bd .git/index
+    if buflisted(bufname('.git'))
+        bd .git
     else
         Git
     endif
