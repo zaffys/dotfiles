@@ -21,8 +21,6 @@
 !/.config/nvim/
 !/.config/nvim/**
 !/.config/nvim/plugins/**
-!/.config/wezterm/
-!/.config/wezterm/wezterm.lua
 !/.ctags.d/
 !/.ctags.d/config.ctags
 !/.fzf.zsh
