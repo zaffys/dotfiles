@@ -1,4 +1,7 @@
-require'nvim_comment'.setup {
+local status, comment = pcall(require, "nvim_comment")
+if (not status) then return end
+
+comment.setup {
   {
     -- Linters prefer comment and line to have a space in between markers
     marker_padding = true,

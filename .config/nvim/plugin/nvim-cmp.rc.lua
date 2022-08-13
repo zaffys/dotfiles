@@ -1,7 +1,9 @@
-vim.opt.completeopt = "menu,menuone,noselect"
-
-local cmp = require'cmp'
+local status, cmp = pcall(require, "nvim-cmp")
 local lspkind = require('lspkind')
+
+if (not status) then return end
+
+vim.opt.completeopt = "menu,menuone,noselect"
 
 cmp.setup({
   formatting = {
@@ -54,36 +56,4 @@ cmp.setup.cmdline(':', {
   }, {
     { name = 'cmdline' }
   })
-})
-
-require('lspkind').init({
-  mode = 'symbol_text',
-  preset = 'codicons',
-  symbol_map = {
-    Text = "",
-    Method = "",
-    Function = "",
-    Constructor = "",
-    Field = "ﰠ",
-    Variable = "",
-    Class = "ﴯ",
-    Interface = "",
-    Module = "",
-    Property = "ﰠ",
-    Unit = "塞",
-    Value = "",
-    Enum = "",
-    Keyword = "",
-    Snippet = "",
-    Color = "",
-    File = "",
-    Reference = "",
-    Folder = "",
-    EnumMember = "",
-    Constant = "",
-    Struct = "פּ",
-    Event = "",
-    Operator = "",
-    TypeParameter = ""
-  },
 })

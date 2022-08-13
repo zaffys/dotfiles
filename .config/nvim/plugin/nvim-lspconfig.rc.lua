@@ -1,17 +1,9 @@
--- nvim-lsp-installer
-require("nvim-lsp-installer").setup {}
-local lspconfig = require('lspconfig')
-
--- nvim-cmp
-require 'cmp'.setup {
-  sources = {
-    { name = 'nvim_lsp' }
-  }
-}
+local status, lspconfig = pcall(require, "lspconfig")
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+if (not status) then return end
 
--- nvim-lspconfig
 local on_attach = function(_, bufnr)
   -- Enable to insert imported library for golang
   function OrgImports(wait_ms)
@@ -59,15 +51,6 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', ',f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", ",r", "<cmd>Lspsaga rename<cr>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", ",a", "<cmd>Lspsaga code_action<cr>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "x", ",x", ":<c-u>Lspsaga range_code_action<cr>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", ",e", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-j>", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", opts)
 end
 
 -- diagnosticls

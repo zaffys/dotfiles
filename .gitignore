@@ -22,15 +22,13 @@
 !/.config/neofetch/**
 !/.config/nvim/
 !/.config/nvim/**
-!/.config/nvim/plugins/**
+/.config/nvim/plugin/packer_compiled.lua
 !/.ctags.d/
 !/.ctags.d/config.ctags
 !/.fzf.zsh
 !/.github/
 !/.github/**
 !/.gitignore
-!/.gitignore_global
-!/.gitkeep
 !/.tmux.conf
 !/.tmux/
 !/.tmux/plugins/
