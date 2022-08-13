@@ -173,6 +173,13 @@ lspconfig.sumneko_lua.setup {
   capabilities = capabilities,
   settings = {
     Lua = {
+      format = {
+        enable = true,
+        defaultConfig = {
+          indent_style = "space",
+          indent_size = "2",
+        }
+      },
       runtime = {
         version = 'LuaJIT',
         path = runtime_path,
