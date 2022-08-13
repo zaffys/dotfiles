@@ -9,9 +9,6 @@
 !/.config/
 !/.config/alacritty/
 !/.config/alacritty/alacritty.yml
-!/.config/anyenv/
-!/.config/anyenv/anyenv-install/
-!/.config/anyenv/anyenv-install/**
 !/.config/gh/
 !/.config/gh/state.yml
 !/.config/gh/config.yml
