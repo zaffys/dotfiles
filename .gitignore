@@ -12,9 +12,6 @@
 !/.config/anyenv/
 !/.config/anyenv/anyenv-install/
 !/.config/anyenv/anyenv-install/**
-!/.config/coc/
-!/.config/coc/extensions/
-!/.config/coc/extensions/package.json
 !/.config/gh/
 !/.config/gh/state.yml
 !/.config/gh/config.yml
