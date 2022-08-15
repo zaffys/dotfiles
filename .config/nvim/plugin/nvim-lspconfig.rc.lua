@@ -23,7 +23,7 @@ local on_attach = function(_, bufnr)
 
   local lspconfig_group = vim.api.nvim_create_augroup('lspconfig', { clear = true })
   vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = '*.go, *.js, *.ts',
+    pattern = '*.go, *.js, *.ts, *.vue',
     command = 'lua vim.lsp.buf.formatting_sync(nil, 1000)',
     group = lspconfig_group
   })
