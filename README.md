@@ -1,10 +1,10 @@
 [![Dotfiles CI](https://github.com/reona5/dotfiles/actions/workflows/main.yml/badge.svg)](https://github.com/reona5/dotfiles/actions/workflows/main.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/reona5/dotfiles/blob/main/LICENSE)
 
-# reona's dotfiles
+# Reona's dotfiles
 
 The dotfiles updated from time to time.
-Editor: NeoVim; Shell: zsh; Terminal: iterm2, tmux; OS: MacOS Monterey
+Editor: NeoVim; Shell: zsh; Terminal: iTerm2, tmux; OS: MacOS Monterey
 
 ## Usage
 
