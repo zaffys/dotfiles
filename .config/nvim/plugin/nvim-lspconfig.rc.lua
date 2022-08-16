@@ -46,7 +46,8 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl',
+    '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
@@ -57,7 +58,8 @@ end
 lspconfig.diagnosticls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'ruby', 'css', 'less', 'scss', 'markdown', 'vue' },
+  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'ruby', 'css', 'less', 'scss',
+    'markdown', 'vue' },
   init_options = {
     linters = {
       eslint = {
@@ -118,6 +120,10 @@ lspconfig.diagnosticls.setup {
       rubocop = {
         command = 'bundle',
         args = { 'exec', 'rubocop', '-a', '--stderr', '--stdin', '%filepath' }
+      },
+      stylelint = {
+        command = 'stylelint',
+        args = { '--fix', '--stdin', '--stdin-filename', '%filepath' },
       }
     },
     formatFiletypes = {
@@ -135,15 +141,16 @@ lspconfig.diagnosticls.setup {
     }
   }
 }
+
 -- diagnostics-icon
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-  underline = true,
-  virtual_text = {
-    spacing = 4,
-    prefix = ''
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
+  {
+    underline = true,
+    virtual_text = {
+      spacing = 4,
+      prefix = ''
+    }
   }
-}
 )
 
 -- lua-language-server
@@ -158,10 +165,6 @@ lspconfig.sumneko_lua.setup {
     Lua = {
       format = {
         enable = true,
-        defaultConfig = {
-          indent_style = "space",
-          indent_size = "2",
-        }
       },
       runtime = {
         version = 'LuaJIT',
@@ -225,4 +228,19 @@ lspconfig.tsserver.setup {
 lspconfig.vuels.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+}
+
+-- stylelint
+lspconfig.stylelint_lsp.setup {
+  filetypes = {
+    'css',
+    'scss',
+    'vue'
+  },
+  settings = {
+    stylelintplus = {
+      autoFixOnSave = true,
+      autoFixOnFormat = true,
+    }
+  }
 }
