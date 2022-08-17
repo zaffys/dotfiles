@@ -4,7 +4,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 if (not status) then return end
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   -- Enable to insert imported library for golang
   function OrgImports(wait_ms)
     local params = vim.lsp.util.make_range_params()
@@ -21,18 +21,19 @@ local on_attach = function(_, bufnr)
     end
   end
 
-  local lspconfig_group = vim.api.nvim_create_augroup('lspconfig', { clear = true })
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = '*.go, *.js, *.ts, *.vue',
-    command = 'lua vim.lsp.buf.formatting_sync(nil, 1000)',
-    group = lspconfig_group
-  })
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = '*.go',
-    command = 'lua OrgImports(100)',
-    group = lspconfig_group
-  })
-
+  if client.server_capabilities.documentFormattingProvider then
+    local group = vim.api.nvim_create_augroup('format', { clear = true })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = 'lua vim.lsp.buf.formatting_seq_sync(nil, 1000)',
+      group = group
+    })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = 'lua OrgImports(100)',
+      group = group
+    })
+  end
 
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -108,11 +109,6 @@ lspconfig.diagnosticls.setup {
       ruby = 'rubocop'
     },
     formatters = {
-      eslint_d = {
-        command = 'eslint_d',
-        args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
-        rootPatterns = { '.git' },
-      },
       prettier = {
         command = 'prettier',
         args = { '--stdin-filepath', '%filename' }
@@ -128,15 +124,15 @@ lspconfig.diagnosticls.setup {
     },
     formatFiletypes = {
       css = 'prettier',
-      javascript = 'eslint_d',
-      javascriptreact = 'eslint_d',
+      javascript = 'prettier',
+      javascriptreact = 'prettier',
       json = 'prettier',
       scss = 'prettier',
       less = 'prettier',
-      typescript = 'eslint_d',
-      typescriptreact = 'eslint_d',
+      typescript = 'prettier',
+      typescriptreact = 'prettier',
       ruby = 'rubocop',
-      vue = 'eslint_d',
+      vue = 'prettier',
       markdown = 'prettier',
     }
   }
@@ -232,11 +228,8 @@ lspconfig.vuels.setup {
 
 -- stylelint
 lspconfig.stylelint_lsp.setup {
-  filetypes = {
-    'css',
-    'scss',
-    'vue'
-  },
+  on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     stylelintplus = {
       autoFixOnSave = true,
