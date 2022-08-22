@@ -25,7 +25,7 @@ local on_attach = function(client, bufnr)
     local group = vim.api.nvim_create_augroup('format', { clear = true })
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
-      command = 'lua vim.lsp.buf.formatting_sync(nil, 1000)',
+      command = 'lua vim.lsp.buf.formatting_seq_sync()',
       group = group
     })
     vim.api.nvim_create_autocmd("BufWritePre", {
@@ -130,15 +130,15 @@ lspconfig.diagnosticls.setup {
     },
     formatFiletypes = {
       css = 'prettier',
-      javascript = 'eslint',
-      javascriptreact = 'eslint',
+      javascript = 'prettier',
+      javascriptreact = 'prettier',
       json = 'prettier',
       scss = 'prettier',
       less = 'prettier',
-      typescript = 'eslint',
-      typescriptreact = 'eslint',
+      typescript = 'prettier',
+      typescriptreact = 'prettier',
       ruby = 'rubocop',
-      vue = 'eslint',
+      vue = 'prettier',
       markdown = 'prettier',
     }
   }
@@ -198,6 +198,35 @@ lspconfig.solargraph.setup {
   settings = {
     solargraph = {
       diagnostics = false
+    }
+  }
+}
+
+-- tsserver
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
+}
+
+-- vuels
+lspconfig.vuels.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+-- stylelint
+lspconfig.stylelint_lsp.setup {
+  filetypes = {
+    'css',
+    'scss',
+    'vue'
+  },
+  cmd = { "stylelint-lsp", "--stdio" },
+  settings = {
+    stylelintplus = {
+      autoFixOnSave = true,
+      autoFixOnFormat = true,
     }
   }
 }

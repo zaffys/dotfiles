@@ -14,7 +14,7 @@ vim.cmd([[
 	let g:test#transformation = 'docker'
 	let g:test#strategy = 'vimux'
 	let g:test#javascript#runner = 'jest'
-	let test#javascript#jest#executable = 'yarn test'
+	let test#javascript#jest#executable = 'yarn test -u'
 ]])
 
 local opts = { noremap = true, silent = true }
