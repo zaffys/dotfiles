@@ -25,11 +25,11 @@ local on_attach = function(client, bufnr)
     local group = vim.api.nvim_create_augroup('format', { clear = true })
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
-      command = 'lua vim.lsp.buf.formatting_seq_sync(nil, 1000)',
+      command = 'lua vim.lsp.buf.formatting_sync(nil, 1000)',
       group = group
     })
     vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
+      pattern = '*.go',
       command = 'lua OrgImports(100)',
       group = group
     })
@@ -106,9 +106,15 @@ lspconfig.diagnosticls.setup {
       javascriptreact = 'eslint',
       typescript = 'eslint',
       typescriptreact = 'eslint',
+      vue = 'eslint',
       ruby = 'rubocop'
     },
     formatters = {
+      eslint = {
+        command = 'eslint_d',
+        args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
+        rootPatterns = { '.git' },
+      },
       prettier = {
         command = 'prettier',
         args = { '--stdin-filepath', '%filename' }
@@ -124,15 +130,15 @@ lspconfig.diagnosticls.setup {
     },
     formatFiletypes = {
       css = 'prettier',
-      javascript = 'prettier',
-      javascriptreact = 'prettier',
+      javascript = 'eslint',
+      javascriptreact = 'eslint',
       json = 'prettier',
       scss = 'prettier',
       less = 'prettier',
-      typescript = 'prettier',
-      typescriptreact = 'prettier',
+      typescript = 'eslint',
+      typescriptreact = 'eslint',
       ruby = 'rubocop',
-      vue = 'prettier',
+      vue = 'eslint',
       markdown = 'prettier',
     }
   }
@@ -211,29 +217,4 @@ lspconfig.gopls.setup {
       staticcheck = true,
     },
   },
-}
-
--- tsserver
-lspconfig.tsserver.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
-}
-
--- vuels
-lspconfig.vuels.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
--- stylelint
-lspconfig.stylelint_lsp.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    stylelintplus = {
-      autoFixOnSave = true,
-      autoFixOnFormat = true,
-    }
-  }
 }

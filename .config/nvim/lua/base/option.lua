@@ -1,17 +1,18 @@
 vim.o.expandtab = true
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
-vim.o.scrolloff = 5
-vim.o.whichwrap = "b,s,h,l,[,],<,>"
-vim.o.wrap = false
-vim.o.signcolumn = "yes"
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.autoread = true
-vim.o.autowriteall = true
+vim.o.autowrite = true
 vim.o.autoindent = true
 vim.o.cursorline = true
 vim.o.number = true
+vim.o.wrap = false
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.scrolloff = 5
+vim.o.updatetime = 500
+vim.o.whichwrap = "b,s,h,l,[,],<,>"
+vim.o.signcolumn = "yes"
 
 vim.cmd([[
 	" settings for golang
@@ -30,5 +31,16 @@ vim.cmd([[
 		augroup END
 		call Space()
 	endif
-]])
 
+  " autosave
+  function s:AutoWriteIfPossible()
+    if &modified && !&readonly && bufname('%') !=# '' && &buftype ==# '' && expand("%") !=# ''
+      write
+    endif
+  endfunction
+  augroup AutoWrite
+    autocmd!
+    autocmd CursorHold * call s:AutoWriteIfPossible()
+    autocmd CursorHoldI * call s:AutoWriteIfPossible()
+  augroup END
+]])
