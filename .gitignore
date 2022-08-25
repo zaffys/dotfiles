@@ -3,6 +3,7 @@
 /.**
 
 ### not ignore ###
+!/.asdfrc
 !/.bin/
 !/.bin/**
 !/.bin.local
