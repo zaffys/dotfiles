@@ -4,7 +4,7 @@
 # Reona's dotfiles
 
 The dotfiles updated from time to time.
-Editor: NeoVim; Shell: zsh; Terminal: iTerm2, tmux; OS: MacOS Monterey
+Editor: NeoVim; Shell: zsh; Terminal: Alacritty, tmux; OS: MacOS Monterey
 
 ## Usage
 

@@ -72,6 +72,7 @@ brew "zsh"
 brew "zsh-completions"
 brew "sanemat/font/ricty"
 brew "universal-ctags"
+brew "raycast"
 
 cask "alfred"
 cask "chromedriver"
