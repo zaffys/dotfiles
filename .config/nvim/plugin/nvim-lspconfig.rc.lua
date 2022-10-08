@@ -64,6 +64,36 @@ lspconfig.diagnosticls.setup {
   init_options = {
     linters = {
       eslint = {
+        sourceName = 'eslint',
+        command = 'eslint',
+        rootPatterns = {
+          '.git',
+          'package.json'
+        },
+        debounce = 100,
+        args = {
+          '--cache',
+          '--stdin',
+          '--stdin-filename',
+          '%filepath',
+          '--format',
+          'json'
+        },
+        parseJson = {
+          errorsRoot = '[0].messages',
+          line = 'line',
+          column = 'column',
+          endLine = 'endLine',
+          endColumn = 'endColumn',
+          message = '${message} [${ruleId}]',
+          security = 'severity'
+        },
+        securities = {
+          [2] = 'error',
+          [1] = 'warning'
+        }
+      },
+      eslint_d = {
         command = 'eslint_d',
         rootPatterns = { '.git' },
         debounce = 100,
@@ -85,15 +115,15 @@ lspconfig.diagnosticls.setup {
       },
       rubocop = {
         command = 'bundle',
-        args = { "exec", "rubocop", "--format", "json", "--force-exclusion", "%filepath" },
+        args = { 'exec', 'rubocop', '--format', 'json', '--force-exclusion', '%filepath' },
         debounce = 100,
         sourceName = 'rubocop',
         parseJson = {
-          errorsRoot = "files[0].offenses",
-          line = "location.line",
-          column = "location.column",
-          message = "[${cop_name}] ${message}",
-          security = "severity"
+          errorsRoot = 'files[0].offenses',
+          line = 'location.line',
+          column = 'location.column',
+          message = '[${cop_name}] ${message}',
+          security = 'severity'
         },
         securities = {
           fatal = 'error',
@@ -102,10 +132,10 @@ lspconfig.diagnosticls.setup {
       }
     },
     filetypes = {
-      javascript = 'eslint',
-      javascriptreact = 'eslint',
-      typescript = 'eslint',
-      typescriptreact = 'eslint',
+      javascript = 'eslint_d',
+      javascriptreact = 'eslint_d',
+      typescript = 'eslint_d',
+      typescriptreact = 'eslint_d',
       vue = 'eslint',
       ruby = 'rubocop'
     },
@@ -200,13 +230,6 @@ lspconfig.solargraph.setup {
       diagnostics = false
     }
   }
-}
-
--- tsserver
-lspconfig.tsserver.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
 }
 
 -- vuels
