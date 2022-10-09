@@ -1,4 +1,4 @@
-local status, cmp = pcall(require, "nvim-cmp")
+local status, cmp = pcall(require, "cmp")
 local lspkind = require('lspkind')
 
 if (not status) then return end
@@ -7,7 +7,7 @@ vim.opt.completeopt = "menu,menuone,noselect"
 
 cmp.setup({
   formatting = {
-    format = function (entry, vim_item)
+    format = function(entry, vim_item)
       vim_item.kind = lspkind.presets.default[vim_item.kind]
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
@@ -27,8 +27,7 @@ cmp.setup({
   mapping = {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
+    ['<C-]>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
@@ -37,11 +36,11 @@ cmp.setup({
     ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
   },
   sources = cmp.config.sources({
-  { name = 'nvim_lsp' },
-  { name = 'vsnip' },
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' },
   }, {
     { name = 'buffer' },
-    })
+  })
 })
 
 cmp.setup.cmdline('/', {
