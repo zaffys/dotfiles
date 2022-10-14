@@ -7,5 +7,5 @@ vim.opt.list = true
 indent_blankline.setup {
   show_current_context = true,
   show_current_context_start = true,
-  filetype_exclude = {'NvimTree', 'man', 'dashboard', 'lsp-installer'},
+  filetype_exclude = { 'NvimTree', 'man', 'dashboard', 'lsp-installer' },
 }

@@ -15,9 +15,6 @@ vim.o.whichwrap = "b,s,h,l,[,],<,>"
 vim.o.signcolumn = "yes"
 
 vim.cmd([[
-	" settings for golang
-	au FileType go setlocal sw=4 ts=4 sts=4 noet
-
 	" Full-width Space highlight
 	function! Space()
 		highlight Space cterm=underline ctermfg=lightblue guibg=darkgray
@@ -42,5 +39,7 @@ vim.cmd([[
     autocmd!
     autocmd CursorHold * call s:AutoWriteIfPossible()
     autocmd CursorHoldI * call s:AutoWriteIfPossible()
+    " settings for golang
+    autocmd FileType go setlocal sw=4 ts=4 sts=4 noet
   augroup END
 ]])
