@@ -1,7 +1,6 @@
 local status, lspconfig = pcall(require, "lspconfig")
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+local capabilities = cmp_nvim_lsp.default_capabilities()
 if (not status) then return end
 
 local on_attach = function(client, bufnr)
