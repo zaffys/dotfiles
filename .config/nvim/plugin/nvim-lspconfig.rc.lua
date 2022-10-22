@@ -268,3 +268,9 @@ lspconfig.gopls.setup {
     },
   },
 }
+
+-- sqls
+lspconfig.sqls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}

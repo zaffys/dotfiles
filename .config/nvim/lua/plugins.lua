@@ -52,6 +52,7 @@ return packer.startup(function(use)
   use 'preservim/vimux'
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
+  use 'nanotee/sqls.nvim'
 
   if PackerBootstrap then
     require('packer').sync()
