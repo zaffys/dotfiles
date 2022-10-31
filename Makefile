@@ -1,5 +1,5 @@
 .PHONY: all
-all: init link defaults brew mas
+all: init link defaults brew mas install
 
 .PHONY: init
 init:
@@ -20,3 +20,7 @@ brew:
 .PHONY: mas
 mas:
 	.bin/mas.sh
+
+.PHONY: install
+mas:
+	.bin/install.sh

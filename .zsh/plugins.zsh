@@ -23,6 +23,7 @@ zinit ice from"gh-r" as"program" atload'!eval $(starship init zsh)'
 zinit light starship/starship
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zsh-users/zsh-history-substring-search
 zinit ice wait'0'; zinit light zsh-users/zsh-completions
 autoload -Uz compinit && compinit
 

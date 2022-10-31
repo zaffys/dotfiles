@@ -58,4 +58,6 @@ alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin br
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
+alias ll='ls -l'
+alias mp='find . -mindepth 1 -maxdepth 1 -type d -print -exec git --git-dir={}/.git --work-tree=$PWD/{} pull \;'
 export EDITOR=/usr/local/bin/nvim
