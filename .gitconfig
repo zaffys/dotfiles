@@ -1,9 +1,9 @@
 [user]
-  email = shimada.reona@gmail.com
-	name = reona5
+  email = zaffys@outlook.com
+	name = zys
 [core]
-	excludesfile = /Users/reona5/.gitignore_global
-	editor = nvim
+	excludesfile = /Users/mzs/.gitignore_global
+	editor = lvim
 [alias]
 	ci = commit
 	st = status
