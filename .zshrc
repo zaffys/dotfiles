@@ -1,6 +1,10 @@
 source $HOME/.zshenv
 
-export PATH=$HOME/.local/bin:$PATH
+export PNPM_HOME=$HOME/.asdf/installs/pnpm/7.16.1
+
+export PATH=$HOME/.local/bin:$PNPM_HOME/bin:$PATH
+pnpm config set global-bin-dir $PNPM_HOME/bin
+
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
