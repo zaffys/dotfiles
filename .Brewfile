@@ -75,6 +75,7 @@ brew "graphviz"
 brew "imagemagick"
 brew "jq"
 brew "lazygit"
+brew "lazydocker"
 brew "libxml2"
 brew "lua-language-server"
 brew "luajit", args: ["HEAD"]
