@@ -40,6 +40,8 @@ setopt hist_ignore_space
 # ヒストリに保存するときに余分なスペースを削除する
 setopt hist_reduce_blanks
 
+setopt HIST_FIND_NO_DUPS
+
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -52,7 +54,12 @@ fbrm() {
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
-# history substring search key bindings
+# fix for zsh-syntax-highlighting: unhandled ZLE widget 'history-substring-search-up'
+# https://github.com/zsh-users/zsh-syntax-highlighting/issues/411
+zle -N history-substring-search-up; 
+zle -N history-substring-search-down;
+
+# # history substring search key bindings
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
