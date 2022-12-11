@@ -17,9 +17,25 @@ local new_maker = function(filepath, bufnr, opts)
 	end)
 end
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap('n', '<Leader>f', "<Cmd>lua require('telescope.builtin').find_files()<CR>", opts)
-vim.api.nvim_set_keymap('n', '<Leader>g', "<Cmd>lua require('telescope.builtin').live_grep()<CR>", opts)
+
+vim.api.nvim_set_keymap('n', '<Leader>ff', "<Cmd>lua require('telescope.builtin').find_files{ hidden = true }<CR>", opts)
+vim.api.nvim_set_keymap('n', '<Leader>lg', "<Cmd>lua require('telescope.builtin').live_grep()<CR>", opts)
 vim.api.nvim_set_keymap('n', '<Leader><leader>', "<Cmd>lua require('telescope.builtin').buffers()<CR>", opts)
+
+-- Builtin
+vim.api.nvim_set_keymap('n', '<leader>fg', '<CMD>lua require("telescope.builtin").git_files()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>fh', '<CMD>lua require("telescope.builtin").help_tags()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>fd', '<CMD>lua require("telescope.builtin").diagnostics()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>fr', '<CMD>lua require("telescope.builtin").registers()<CR>', opts)
+
+-- Language Servers
+vim.api.nvim_set_keymap('n', '<leader>lsd', '<CMD>lua require("telescope.builtin").lsp_definitions{}<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>lst', '<CMD>lua require("telescope.builtin").lsp_type_definitions{}<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>lsi', '<CMD>lua require("telescope.builtin").lsp_implementations{}<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>lsl', '<CMD>lua require("telescope.builtin").lsp_code_actions{}<CR>', opts)
+
+-- Extensions
+vim.api.nvim_set_keymap('n', '<leader>fs', '<CMD>lua require("telescope").extensions["session-lens"].search_session()<CR>', opts)
 
 -- Global remapping
 ------------------------------
@@ -56,7 +72,9 @@ telescope.setup {
 		file_ignore_patterns = {
 			'node_modules',
 			'channel.html',
-			'tags'
+			'tags',
+			'secret.d',
+			'%.pem'
 		},
 		buffer_previewer_maker = new_maker,
 	}

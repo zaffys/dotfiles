@@ -7,13 +7,24 @@ vim.opt.completeopt = "menu,menuone,noselect"
 
 cmp.setup({
   formatting = {
+    fields = { 'menu', 'abbr', 'kind' },
     format = function(entry, vim_item)
       vim_item.kind = lspkind.presets.default[vim_item.kind]
+      local menu_icon = {
+        nvim_lsp = 'λ',
+        luasnip = '⋗',
+        buffer = 'Ω',
+        path = '🖫',
+      }
       vim_item.menu = ({
-        nvim_lsp = "[LSP]",
         look = "[Dict]",
         buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        nvim_lua = "[Lua]",
+        treesitter = "[TS]",
+        vsnip = "[VSnip]",
       })[entry.source.name]
+      vim_item.menu = menu_icon[entry.source.name]
 
       vim_item.kind, vim_item.menu = vim_item.menu, vim_item.kind
       return vim_item
@@ -36,8 +47,11 @@ cmp.setup({
     ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' },
+    { name = 'path' },
+    { name = 'nvim_lsp', keyword_length = 3 },
+    { name = 'nvim_lua', keyword_length = 3 },
+    { name = 'treesitter' },
+    { name = 'vsnip', keyword_length = 2 },
   }, {
     { name = 'buffer' },
   })

@@ -3,11 +3,13 @@ if (not status) then return end
 
 lualine.setup {
   options = {
+    extensions = { 'fzf', 'quickfix' },
     icons_enabled = true,
     section_separators = {'', ''},
     component_separators = {'', ''},
     disabled_filetypes = {},
-    globalstatus = true
+    globalstatus = true,
+    theme = 'tokyonight'
   },
   sections = {
     lualine_a = {'mode'},

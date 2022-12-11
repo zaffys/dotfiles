@@ -24,6 +24,65 @@ vim.cmd([[
 augroup END
 ]])
 
+-- augroup Markdown
+vim.cmd([[
+  augroup WrapInMarkdown
+  autocmd!
+  autocmd FileType markdown setlocal wrap
+augroup END
+]])
+
+local augroup = vim.api.nvim_create_augroup('user_cmds', {clear = true})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {'help', 'man'},
+  group = augroup,
+  desc = 'Use q to close the window',
+  command = 'nnoremap <buffer> q <cmd>quit<cr>'
+})
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = augroup,
+  desc = 'Highlight on yank',
+  callback = function(event)
+    vim.highlight.on_yank({higroup = 'Visual', timeout = 200})
+  end
+})
+
+local settings = {
+  backup = false,
+  errorbells = false,
+  expandtab = true,
+  hidden = true,
+  scrolloff = 3,
+  softtabstop = 2,
+  showmode = false,
+  termguicolors = true
+}
+
+-- Generic vim.o
+for k, v in pairs(settings) do
+  vim.o[k] = v
+end
+
+-- Custom vim.o
+vim.o.clipboard = 'unnamedplus'
+vim.o.shortmess = vim.o.shortmess .. 'c'
+
+-- Not yet in vim.o
+vim.cmd('set encoding=utf8')
+vim.cmd('set nowritebackup')
+vim.cmd('set shiftwidth=2')
+vim.cmd('set secure')
+vim.cmd('set splitright')
+vim.cmd('set tabstop=2')
+vim.cmd('set updatetime=300')
+
+-- vim wo
+vim.wo.number = true
+vim.wo.relativenumber = true
+vim.wo.wrap = false
+
 -- Manage window
 keymap.set('n', ',', '<Nop>')
 keymap.set('n', ',j', '<C-w>j')
