@@ -60,4 +60,43 @@ packer.startup(function(use)
 
   -- git blame ( GitLens )
   use({ "kessejones/git-blame-line.nvim" })
+
+  -- rainbow parentheses
+  use("p00f/nvim-ts-rainbow")
+
+  -- toggleterm terminal in vim TODO: setup.rc
+  use({
+    "akinsho/toggleterm.nvim",
+    tag = "*",
+    config = function()
+      require("toggleterm").setup()
+    end,
+  })
+
+  -- lsp colors
+  use("folke/lsp-colors.nvim")
+
+  -- treesitter context
+  use("nvim-treesitter/nvim-treesitter-context")
+
+  -- indent blankline
+  use("lukas-reineke/indent-blankline.nvim")
+
+  -- smooth scrolling TODO: setup
+  use("karb94/neoscroll.nvim")
+
+  -- which key
+  use({
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup({})
+    end,
+  })
+
+  -- highlight word under the cursor
+  use("RRethy/vim-illuminate")
+
+  -- % improved
+  use("andymass/vim-matchup")
+
 end)

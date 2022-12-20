@@ -1,5 +1,8 @@
 -- onedark
 require("onedark").setup({
+  -- Compiled file's destination location
+  compile_path = vim.fn.stdpath("cache") .. "/onedark",
+  compile_file_suffix = "_compiled", -- Compiled file suffix
   -- Main options --
   style = "dark", -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
   transparent = true, -- Show/hide background
@@ -24,7 +27,7 @@ require("onedark").setup({
 
   -- Lualine options --
   lualine = {
-    transparent = false, -- lualine center bar transparency
+    transparent = true, -- lualine center bar transparency
   },
 
   -- Custom Highlights --
@@ -42,4 +45,4 @@ require("onedark").setup({
 -- require("onedark").load()
 
 -- setup must be called before loading
--- vim.cmd("colorscheme nightfox")
+-- vim.cmd("colorscheme onedark")
