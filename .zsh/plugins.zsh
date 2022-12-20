@@ -20,4 +20,4 @@ else
 	compinit -C;
 fi;
 
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"

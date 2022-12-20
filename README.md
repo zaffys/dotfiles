@@ -16,3 +16,8 @@ $ make all
 
 ## Screenshot
 <img width="1674" alt="image" src="https://user-images.githubusercontent.com/46399968/168483186-ce4de2cc-4405-4177-b819-c66352d27bd4.png">
+
+## nvim config
+
+NVIM config is sourced from [craftzdog](https://github.com/VonHeikemen/dotfiles)
+and [themuuln/vim](https://github.com/themuuln/nvim.git)

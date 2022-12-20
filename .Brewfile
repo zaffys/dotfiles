@@ -102,6 +102,7 @@ brew "sanemat/font/ricty"
 brew "universal-ctags"
 brew "raycast"
 brew "watchman"
+brew "monit"
 
 cask "firefox"
 cask "gyazo"

@@ -1,1 +1,1 @@
-vim.api.nvim_set_keymap('n', '<leader>l', ':LazyGit<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'lg', ':LazyGit<CR>', { noremap = true, silent = true })
