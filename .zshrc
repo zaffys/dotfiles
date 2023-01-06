@@ -37,7 +37,8 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 eval "$(starship init zsh)"
 
+#asdf global pnpm 7.16.1
+
 . /usr/local/opt/asdf/libexec/asdf.sh
 
-asdf global pnpm 7.16.1
 pnpm config set global-bin-dir $PNPM_HOME/bin

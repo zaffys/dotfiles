@@ -2,9 +2,9 @@
 
 asdf plugin-add nodejs
 
-asdf install nodejs lts-gallium
-asdf global nodejs lts-gallium
-asdf local nodejs lts-gallium
+asdf install nodejs lts-hydrogen
+asdf global nodejs lts-hydrogen
+asdf local nodejs lts-hydrogen
 
 npm install -g npm
 npm install -g yarn
@@ -17,21 +17,21 @@ asdf global direnv 2.32.1
 asdf local direnv 2.32.1
 
 asdf plugin-add pnpm
-asdf install pnpm 7.12.1
-asdf global pnpm 7.12.1
-asdf local pnpm 7.12.1
+asdf install pnpm 7.19.0
+asdf global pnpm 7.19.0
+asdf local pnpm 7.19.0
 
 asdf plugin-add rust
 RUST_WITHOUT=rust-docs,rust-other-component asdf install rust 1.63.0
-asdf global rust 1.63.0
-asdf local rust 1.63.0
+asdf global rust 1.66.0
+asdf local rust 1.66.0
 
 git clone --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts
 cd nerd-fonts
 git sparse-checkout add patched-fonts/JetBrainsMono
 
 curl -s "https://get.sdkman.io" | bash
-sdk install java 17.0.3-tem
+sdk install java 11.0.17-tem
 sdk install maven
 
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
