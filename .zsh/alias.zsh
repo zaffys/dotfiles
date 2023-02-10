@@ -60,4 +60,5 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias ll='ls -l'
 alias mp='find . -mindepth 1 -maxdepth 1 -type d -print -exec git --git-dir={}/.git --work-tree=$PWD/{} pull \;'
+alias multipull='find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;'
 export EDITOR=/usr/local/bin/nvim

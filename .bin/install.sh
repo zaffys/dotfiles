@@ -6,10 +6,8 @@ asdf install nodejs lts-hydrogen
 asdf global nodejs lts-hydrogen
 asdf local nodejs lts-hydrogen
 
-npm install -g npm
 npm install -g yarn
 npm install -g alacritty-themes
-npm install -g @upstash/cli
 
 asdf plugin-add direnv
 asdf direnv setup --shell zsh --version latest
@@ -35,6 +33,8 @@ sdk install java 11.0.17-tem
 sdk install maven
 
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 # Create a cli shortcut for Sublime Text
 # ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl

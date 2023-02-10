@@ -26,9 +26,9 @@ zinit wait lucid light-mode as'null' \
 
 source $HOME/.zshenv
 
-export PNPM_HOME=$HOME/.asdf/installs/pnpm/7.16.1
+export PNPM_HOME=$HOME/.asdf/installs/pnpm/7.19.0
 
-export PATH=$HOME/.local/bin:$PNPM_HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$PNPM_HOME:$PATH
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -37,8 +37,13 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 eval "$(starship init zsh)"
 
-#asdf global pnpm 7.16.1
+#asdf global pnpm 7.19.0
+#source "/Users/zsiddiqi/.asdf/installs/rust/1.63.0/env"
 
 . /usr/local/opt/asdf/libexec/asdf.sh
 
 pnpm config set global-bin-dir $PNPM_HOME/bin
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/zsiddiqi/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
