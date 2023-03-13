@@ -14,4 +14,4 @@ export TERM=screen-256color
 export LG_CONFIG_FILE=~/.config/lazygit/config.yml
 export GPG_TTY=$(tty)
 
-# . /usr/local/opt/asdf/libexec/asdf.sh
+# . /opt/homebrew/opt/asdf/libexec/asdf.sh

@@ -56,6 +56,21 @@ defaults write com.apple.menuextra.clock DateFormat -string 'EEE d MMM HH:mm'
 # Display battery level in the menu bar
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
+# setup apple system defaults
+defaults write com.apple.dock mru-spaces -bool false
+defaults write com.apple.screencapture location -string "${HOME}/Documents/Screenshots"
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
+defaults write com.apple.frameworks.diskimages skip-verify -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
+defaults write NSGlobalDomain KeyRepeat -int 1
+# end apple system defaults
+
 for app in "Dock" \
 	"Finder" \
 	"SystemUIServer"; do

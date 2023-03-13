@@ -1,4 +1,4 @@
-fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(/opt/homebrew/share/zsh-completions $fpath)
 alias -g @g='| rg'
 alias -g @l='| less'
 alias -g @f='--force-with-lease --force-if-includes'
@@ -52,13 +52,13 @@ alias gsc='git stash clear'
 alias grsh='git reset --soft HEAD^'
 alias grhh='git reset --hard HEAD^'
 alias gre='git restore'
-alias vi='nvim'
+alias vi='lvim'
 alias vanish='git branch | grep -v "master" | grep -v "develop" | xargs git branch -D'
-alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
+alias brew="PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 alias ll='ls -l'
 alias mp='find . -mindepth 1 -maxdepth 1 -type d -print -exec git --git-dir={}/.git --work-tree=$PWD/{} pull \;'
 alias multipull='find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;'
-export EDITOR=/usr/local/bin/nvim
+export EDITOR=/opt/homebrew/bin/lvim

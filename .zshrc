@@ -26,24 +26,17 @@ zinit wait lucid light-mode as'null' \
 
 source $HOME/.zshenv
 
-export PNPM_HOME=$HOME/.asdf/installs/pnpm/7.19.0
+source "/Users/zsiddiqi/.asdf/installs/rust/1.68.0/env"
 
-export PATH=$HOME/.local/bin:$PNPM_HOME:$PATH
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export PATH=$HOME/.local/bin:$HOME/.asdf/installs/nodejs/lts-hydrogen/bin:$PATH
+
+eval "$(starship init zsh)"
+#. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
-eval "$(starship init zsh)"
-
-#asdf global pnpm 7.19.0
-#source "/Users/zsiddiqi/.asdf/installs/rust/1.63.0/env"
-
-. /usr/local/opt/asdf/libexec/asdf.sh
-
-pnpm config set global-bin-dir $PNPM_HOME/bin
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/zsiddiqi/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
