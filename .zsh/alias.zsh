@@ -58,7 +58,10 @@ alias brew="PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
-alias ll='ls -l'
+alias ll='ls -lhG'
+alias la='ls -alhG'
+alias ls='ls -G'
 alias mp='find . -mindepth 1 -maxdepth 1 -type d -print -exec git --git-dir={}/.git --work-tree=$PWD/{} pull \;'
 alias multipull='find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;'
-export EDITOR=/opt/homebrew/bin/lvim
+alias pnx="pnpm nx"
+export EDITOR=lvim
