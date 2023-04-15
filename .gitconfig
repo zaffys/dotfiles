@@ -14,6 +14,10 @@
 [pull]
 	rebase = true
 	prune = true
+[push]
+  autoSetupRemote = true
+[rebase]
+  autoStash = true
 [fetch]
 	prune = true
 [filter "lfs"]
@@ -25,3 +29,5 @@
 	defaultBranch = main
 [ghq]
 	root = ~/src
+[url "ssh://rb.github.com/"]
+	insteadOf = ssh://github.com/
