@@ -34,7 +34,7 @@ source $HOME/.zshenv
 # pnpm config set global-bin-dir $PNPM_HOME/bin
 # export PATH=$HOME/.local/bin:$PNPM_HOME/bin:$PATH
 
-source "/Users/zsiddiqi/.asdf/installs/rust/1.68.0/env"
+source "$HOME/.asdf/installs/rust/1.68.0/env"
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
@@ -50,3 +50,7 @@ export PATH=${HOME}/.krew/bin:$HOME/.local/bin:$HOME/.asdf/shims:/usr/local/opt/
 # . /usr/local/etc/profile.d/z.sh
 
 eval "$(starship init zsh)"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/moz/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
