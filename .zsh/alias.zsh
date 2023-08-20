@@ -65,3 +65,7 @@ alias mp='find . -mindepth 1 -maxdepth 1 -type d -print -exec git --git-dir={}/.
 alias multipull='find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;'
 alias pnx="pnpm nx"
 export EDITOR=lvim
+
+alias k=kubectl
+alias kx=kubectx
+alias kns=kubens

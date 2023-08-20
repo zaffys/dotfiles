@@ -33,13 +33,26 @@ source "/Users/zsiddiqi/.asdf/installs/rust/1.68.0/env"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-export PATH=${HOME}/.krew/bin:$HOME/.local/bin:$HOME/.asdf/shims:/opt/homebrew/opt/curl/bin:$PATH
+export PATH=${HOME}/.krew/bin:$HOME/.local/bin:$HOME/.asdf/shims:/opt/homebrew/opt/curl/bin:$HOME/.local/share/containers/podman-desktop/extensions-storage/podman-desktop.compose/bin:$PATH
+
+# lima VM docker socket rootless
+# export DOCKER_HOST=unix://$HOME/docker.sock
+# lima VM docker socket rootful
+#export DOCKER_HOST='unix:///Users/zsiddiqi/.lima/vz/sock/docker.sock'
+#export DOCKER_HOST='unix:///Users/zsiddiqi/.lima/podman/sock/podman.sock'
+
+# Python venv
+export PATH="$HOME/.pyenv/bin:$PATH"
+export PATH="$HOME/.pyenv/shims:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # add z support
 . /opt/homebrew/etc/profile.d/z.sh
 
 eval "$(starship init zsh)"
-#. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+eval "$(rbenv init -)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

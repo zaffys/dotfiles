@@ -36,11 +36,38 @@ asdf install golang 1.20.2
 asdf global golang 1.20.2
 asdf local golang 1.20.2
 
-# # asdf list-all quarkus
-# asdf plugin add quarkus
-# asdf install quarkus 2.16.5.Final
-# asdf global quarkus 2.16.5.Final
-# asdf local quarkus 2.16.5.Final
+# Install asdf kubectl plugin
+asdf plugin add kubectl
+asdf install kubectl 1.27.1
+# for CDH
+# asdf install kubectl 1.5.8
+# asdf local kubectl 1.5.8
+asdf global kubectl 1.27.1
+asdf local kubectl 1.27.1
+
+# install Ruby via rbenv
+# brew install rbenv
+eval "$(rbenv init -)"
+type rbenv
+# rbenv install -l
+rbenv install 3.1.4
+rbenv global 3.1.4
+ruby -v
+# setting up gem config
+echo "gem: --no-document" > ~/.gemrc
+gem install bundler
+gem env home
+# gem install rails
+rbenv rehash
+
+# install python via venv
+pyenv install 3.8.16
+pyenv global 3.8.16
+pyenv virtualenv 3.8.16 venv
+pyenv activate venv
+# to install grcpio on M1
+export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
+export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
 
 git clone --filter=blob:none --sparse https://github.com/ryanoasis/nerd-fonts
 cd nerd-fonts
@@ -50,6 +77,7 @@ curl -s "https://get.sdkman.io" | bash
 sdk install java 17.0.6-tem
 sdk install maven
 sdk install quarkus 2.16.5.Final
+sdk install springboot
 
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 

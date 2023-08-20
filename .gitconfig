@@ -4,6 +4,7 @@
 [core]
   excludesfile = /Users/mzs/.gitignore_global
   editor = lvim
+	autocrlf = input
 [alias]
   ci = commit
   st = status
