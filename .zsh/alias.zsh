@@ -53,14 +53,23 @@ alias grsh='git reset --soft HEAD^'
 alias grhh='git reset --hard HEAD^'
 alias gre='git restore'
 alias vi='lvim'
+alias vi='lvim'
 alias vanish='git branch | grep -v "master" | grep -v "develop" | xargs git branch -D'
-alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
+alias brew="PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 alias ll='ls -lhG'
 alias la='ls -alhG'
 alias ls='ls -G'
+alias ll='ls -lhG'
+alias la='ls -alhG'
+alias ls='ls -G'
 alias mp='find . -mindepth 1 -maxdepth 1 -type d -print -exec git --git-dir={}/.git --work-tree=$PWD/{} pull \;'
+alias multipull='find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;'
 alias pnx="pnpm nx"
 export EDITOR=lvim
+
+alias k=kubectl
+alias kx=kubectx
+alias kns=kubens

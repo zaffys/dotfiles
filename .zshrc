@@ -29,13 +29,30 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=00;36:pi=40;33:so=01;35:do=01;35:bd=40
 
 source $HOME/.zshenv
 
-#asdf global pnpm 7.19.0
-# export PNPM_HOME=$HOME/.asdf/installs/pnpm/7.19.0
-# pnpm config set global-bin-dir $PNPM_HOME/bin
-# export PATH=$HOME/.local/bin:$PNPM_HOME/bin:$PATH
-
 source "$HOME/.asdf/installs/rust/1.68.0/env"
 
+eval "$(/usr/local/bin/brew shellenv)"
+
+export PATH=${HOME}/.krew/bin:$HOME/.local/bin:$HOME/.asdf/shims:/usr/local/opt/curl/bin:$HOME/.local/share/containers/podman-desktop/extensions-storage/podman-desktop.compose/bin:$PATH
+
+# lima VM docker socket rootless
+# export DOCKER_HOST=unix://$HOME/docker.sock
+# lima VM docker socket rootful
+#export DOCKER_HOST='unix:///Users/zsiddiqi/.lima/vz/sock/docker.sock'
+#export DOCKER_HOST='unix:///Users/zsiddiqi/.lima/podman/sock/podman.sock'
+
+# Python venv
+export PATH="$HOME/.pyenv/bin:$PATH"
+export PATH="$HOME/.pyenv/shims:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# add z support
+. /usr/local/etc/profile.d/z.sh
+
+eval "$(starship init zsh)"
+
+eval "$(rbenv init -)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

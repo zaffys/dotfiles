@@ -2,32 +2,33 @@
   email = zaffys@outlook.com
 	name = zys
 [core]
-	excludesfile = /Users/mzs/.gitignore_global
-	editor = lvim
+  excludesfile = /Users/mzs/.gitignore_global
+  editor = lvim
+	autocrlf = input
 [alias]
-	ci = commit
-	st = status
-	br = branch
-	co = checkout
+  ci = commit
+  st = status
+  br = branch
+  co = checkout
 [merge]
-	ff = false
+  ff = false
 [pull]
-	rebase = true
-	prune = true
+  rebase = true
+  prune = true
 [push]
   autoSetupRemote = true
 [rebase]
   autoStash = true
 [fetch]
-	prune = true
+  prune = true
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [ghq]
-	root = ~/src
+  root = ~/src
 [url "ssh://rb.github.com/"]
 	insteadOf = ssh://github.com/

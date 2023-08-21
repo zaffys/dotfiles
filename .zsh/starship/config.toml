@@ -1,3 +1,11 @@
+# Timeout for commands executed by starship (ms)
+command_timeout = 1500
+
+# Replace the "❯"
+[character]
+success_symbol = "[λ](green)"
+error_symbol = "[λ](red)"
+
 [username]
 style_user = "yellow bold"
 style_root = "white bold"
