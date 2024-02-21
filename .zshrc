@@ -40,6 +40,7 @@ export PATH=${HOME}/.krew/bin:$HOME/.local/bin:$HOME/.asdf/shims:/usr/local/opt/
 # lima VM docker socket rootful
 #export DOCKER_HOST='unix:///Users/zsiddiqi/.lima/vz/sock/docker.sock'
 #export DOCKER_HOST='unix:///Users/zsiddiqi/.lima/podman/sock/podman.sock'
+export DOCKER_HOST=unix:///Users/moz/.colima/default/docker.sock
 
 # Python venv
 export PATH="$HOME/.pyenv/bin:$PATH"

@@ -51,3 +51,5 @@
 !/LICENSE
 !/Makefile
 !/README.md
+
+.DS_*
